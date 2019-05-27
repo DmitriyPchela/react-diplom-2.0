@@ -1,0 +1,49 @@
+#account-page {
+	.section-account {
+		padding: 60px 0;
+		.user-photo-box {
+			width: 150px;
+			overflow: hidden;
+			border-radius: 50%;
+			margin: 0 auto;
+		}
+		.user-info-first {
+			@include flex(column, center, flex-start);
+			height: 100%;
+			&__name {
+				@include text($black, 24px, 600);
+				margin-bottom: 20px;
+			}
+			&__links {
+				a {
+					min-width: 150px;
+					margin-right: 20px;
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+		.user-info-second {
+			height: 100%;
+			border-left: 2px dashed #ccc;
+			padding-left: 30px;
+			p {
+				@include text($black, 16px, 300);
+				opacity: 0.4;
+				font-style: italic;
+			}
+			&__item {
+				margin-bottom: 10px;
+				@include flex(row, flex-start, center);
+				span {
+					@include text($black, 16px);
+					&.field-name {
+						font-weight: 600;
+						margin-right: 20px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+    "development": {
+        "url": "mongodb+srv://DmitriyPchelyanskiy:OT8gFG1QTsCyYAM8@cluster0-sntds.mongodb.net/test?retryWrites=true"
+    },
+    "production": {
+        "url": "mongodb+srv://DmitriyPchelyanskiy:OT8gFG1QTsCyYAM8@cluster0-sntds.mongodb.net/test?retryWrites=true"
+    }
+}

@@ -1,0 +1,171 @@
+body, html {
+	@include text($black);
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	text-decoration: none;
+	text-transform: none;
+	box-shadow: none;
+}
+
+a, button {
+	display: inline-block;
+	color: $black;
+	&:hover, &:focus {
+		text-decoration: none;
+		color: $black;
+		outline: none;
+	}
+}
+
+ul, li {
+	list-style: none
+}
+
+main {
+	@include media-breakpoint-up(xl) {
+		margin-top: 70px;
+	}
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.modal-container {
+	background-color: rgba(0,0,0,0.5);
+	z-index: 1050;
+	opacity: 0;
+	visibility: hidden;
+	@include flex(column, center, center);
+	@include pos(0, 0, 0, 0, fixed);
+	transition: all 0.5s ease-out 0.4s;
+	&.show {
+		opacity: 1;
+		visibility: visible;
+		transition-delay: 0s;
+		.modal-box {
+			opacity: 1;
+			transform: translateY(0);
+			transition-delay: 0.4s;
+		}
+	}
+	.modal-box {
+		background-color: $white;
+		width: 100%;
+		max-width: 500px;
+		margin: 0 auto;
+		transform: translateY(-60px);
+		opacity: 0;
+		transition: all 0.6s ease-out 0s;
+		.modal-header {
+			text-align: center;
+			.modal-title {
+				@include text($black, 24px, 600);
+			}
+		}
+		.modal-body {
+			a {
+				color: $blue;
+				text-decoration: underline;
+			}
+		}
+		.modal-footer {
+			@include flex(row, center, center);
+			.btn-custom {
+				width: 100%;
+				max-width: 200px;
+			}
+		}
+	}
+}
+
+.btn-custom {
+	@include text($white, 14px, 600);
+	padding: 10px 10px 9px 10px;
+	border-radius: 20px;
+	background: $background;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#18a3eb', endColorstr='#587de4',GradientType=1 );
+	color: $white;
+	text-align: center;
+	border: none;
+	&:hover, &:focus {
+		color: $white;
+	}
+}
+
+.phone-box {
+	padding: 9px;
+	border-radius: 20px;
+	border-color: transparent;
+	background: $background;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#18a3eb', endColorstr='#587de4',GradientType=1 );
+	a {
+		@include flex(row, center, center);
+		@include text($white, 14px, 600, 1);
+		img {
+			width: 24px;
+			height: auto;
+			margin-right: 10px;
+		}
+	}
+}
+
+input, textarea {
+	@include text(#828282, 12px);
+	display: block;
+	width: 100%;
+	padding: 12px 16px;
+	margin-bottom: 10px;
+	background: transparent;
+	border: 1px solid #dde4ea;
+	outline: none;
+	resize: none;
+	&::placeholder {
+		font-style: italic;
+	}
+}
+
+.alert {
+	width: 100%;
+	max-width: 350px;
+	margin: 0 auto 20px auto;
+	@include text($black, 16px);
+}
+
+.form-container {
+	.form-group {
+		width: 100%;
+		max-width: 350px;
+		margin: 0 auto 20px auto;
+		text-align: center;
+		.help-block {
+			text-align: left;
+			opacity: 0.4;
+			@include text(red, 12px);
+		}
+		label {
+			@include text($black, 16px);
+			margin-bottom: 5px;
+			width: 100%;
+			text-align: left;
+		}
+		input, select {
+			@include text($black, 16px);
+			padding: 7px 15px;
+			margin-bottom: 0;
+			height: auto;
+		}
+		textarea {
+			@include text($black, 16px);
+			padding: 10px 15px;
+			height: 120px;
+		}
+		button {
+			width: 100%;
+			max-width: 200px;
+			margin: 15px auto 0 auto;
+		}
+	}
+}

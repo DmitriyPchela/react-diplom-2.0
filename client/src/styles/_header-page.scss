@@ -1,0 +1,24 @@
+.section-header {
+	position: relative;
+	padding: 160px 0 140px;
+	background-color: #f0f4f8;
+	img {
+		@include pos(0, 0, auto, auto);
+		width: auto;
+		height: 410px;
+	}
+	.title {
+		@include text($black, 48px, 600);
+		margin-bottom: 0;
+	}
+	.breadcrumps-box {
+		@include text(#828282, 14px);
+		a {
+			color: inherit;
+			font-size: inherit;
+			&.selected {
+				color: $blue;
+			}
+		}
+	}
+}

@@ -1,0 +1,40 @@
+#diaryPage {
+	.section-info {
+		padding: 60px 0;
+		.title {
+			text-align: center;
+			margin-bottom: 30px;
+			@include text($black, 48px, 700);
+		}
+		.text {
+			margin-bottom: 40px;
+			@include text(#828282, 14px, 400, 2);
+		}
+		.btn-box {
+			@include flex(row, center, center);
+			.btn-custom {
+				width: 100%;
+				max-width: 200px;
+				margin: 0 auto;
+			}
+		}
+	}
+	.section-services {
+		padding-bottom: 80px;
+		.sub-title {
+			text-align: center;
+			margin-bottom: 40px;
+			@include text($black, 48px, 700);
+		}
+		.form-container {
+			max-width: 450px;
+			margin: 0 auto;
+			.form-group {
+				max-width: 100%;
+				.btn-custom {
+					max-width: 200px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,50 @@
+{
+	"name": "client",
+	"version": "0.1.0",
+	"main": "index.js",
+	"private": true,
+	"dependencies": {
+		"bootstrap": "^4.3.1",
+		"config": "^3.1.0",
+		"history": "^4.9.0",
+		"jquery": "^3.4.1",
+		"local-storage": "^2.0.0",
+		"lodash": "^4.17.11",
+		"popper": "^1.0.1",
+		"prop-types": "^15.7.2",
+		"react": "^16.8.5",
+		"react-accordeon": "^1.1.1",
+		"react-collapsible": "^2.6.0",
+		"react-css-property-operations": "^15.4.1",
+		"react-dom": "^16.8.5",
+		"react-inline-transition-group": "^2.2.1",
+		"react-input-mask": "^2.0.4",
+		"react-redux": "^7.0.3",
+		"react-router-dom": "^5.0.0",
+		"react-scripts": "2.1.8",
+		"redux": "^4.0.1",
+		"redux-logger": "^3.0.6",
+		"redux-thunk": "^2.3.0",
+		"shortid": "^2.2.14",
+		"swiper": "^4.5.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"proxy": "http://localhost:3001",
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"axios": "^0.18.0"
+	}
+}

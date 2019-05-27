@@ -1,0 +1,35 @@
+//Colors
+$black: #404040;
+$white: #ffffff;
+$gray: #828282;
+$blue: #18a3eb;
+$background: linear-gradient(270deg, rgba(50,200,250,1) 0%, rgba(88,125,228,1) 100%);
+
+//Defaults mixins
+$position-default: absolute !default;
+$size-default: 14px !default;
+$weight-default: 400 !default;
+$line-default: 1.5 !default;
+
+//Mixins
+@mixin flex ($direction, $justify, $align) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin pos( $top, $right, $bottom, $left, $position: $position-default) {
+	position: $position;
+	top: $top;
+	left: $left;
+	right: $right;
+	bottom: $bottom;
+}
+
+@mixin text($color, $size: $size-default, $weight: $weight-default, $line: $line-default) {
+	color: $color;
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $line;
+}

@@ -1,0 +1,59 @@
+footer {
+	background: url('https://colorlib.com/preview/theme/medart/images/footer-bg.png') no-repeat center;
+	background-size: cover;
+	padding: 50px 0;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+	.title {
+		@include flex(row, flex-start, center);
+		@include text($black, 18px, 600);
+		min-height: 50px;
+		margin-bottom: 20px;
+	}
+	.footer-about {
+		a {
+			width: 135px;
+			min-height: 50px;
+			display: block;
+			margin-bottom: 20px;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.text {
+			@include text(#828282, 14px, 400, 2);
+			margin-bottom: 20px;
+			&.copyright {
+				@include text(#828282, 12px, 500);
+				margin-bottom: 0;
+			}
+		}
+	}
+	.footer-contacts {
+		ul {
+			li {
+				@include text(#828282, 14px, 400);
+				display: inline-block;
+				margin-bottom: 10px;
+				a {
+					@include text(#828282, 14px, 400);
+				}
+				span {
+					color: #404040;
+				}
+			}
+		}
+	}
+	.footer-links {
+		ul {
+			column-count: 2;
+			column-gap: 10px;
+			li {
+				margin-bottom: 10px;
+				a {
+					@include text(#828282, 14px, 400);
+				}
+			}
+		}
+	}
+}

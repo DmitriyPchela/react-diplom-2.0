@@ -1,0 +1,44 @@
+header {
+	@include pos(0, 0, unset, 0, fixed);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 12px 0;
+	background-color: $white;
+	z-index: 999;
+	.nav-header-box {
+		@include flex(row, space-between, center);
+		.logo-box {
+			width: 135px;
+		}
+		.header-nav {
+			@include flex(row, center, center);
+			&__item {
+				@include text($black, 16px, 600);
+				display: block;
+				margin-right: 40px;
+				&.active {
+					color: $blue;
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+		.login-box {
+			@include flex(row, center, center);
+			.register-link {
+				@include text($blue, 14px, 600);
+				margin-right: 20px;
+				text-decoration: underline;
+			}
+			.phone-box {
+				padding: 9px 20px;
+				a {
+					img {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,90 @@
+#aboutPage {
+	.section-about {
+		padding: 100px 0;
+		.info-block {
+			&__title {
+				@include text($black, 48px, 600);
+				margin-bottom: 30px;
+			}
+			&__text {
+				@include text($gray, 14px, 400);
+				margin-bottom: 30px;
+			}
+			.btn-custom {
+				padding: 9px 35px;
+			}
+		}
+	}
+	.section-faq {
+		position: relative;
+		padding: 100px 0;
+		.section-bg {
+			@include pos(0, 0, 0, 0);
+			z-index: -1;
+			object-fit: cover;
+		}
+		.title {
+			@include text($white, 48px, 600);
+			margin-bottom: 40px;
+		}
+		.accordeon-box {
+			.Collapsible {
+				&__trigger {
+					position: relative;
+					display: block;
+					background: $background;
+					padding: 12px 38px;
+					margin-bottom: 15px;
+					@include text($white, 16px, 600);
+					cursor: pointer;
+					&:after {
+						transform: translateY(-50%);
+						@include pos(50%, 38px, auto, auto);
+						@include text($white, 24px);
+					}
+					&.is-open {
+						&:after {
+							content: '-';
+						}
+					}
+					&.is-closed {
+						&:after {
+							content: '+';
+						}
+					}
+				}
+				&__contentInner {
+					p {
+						padding: 10px 0;
+						@include text($white, 14px);
+					}
+				}
+			}
+		}
+		.professional-box, .quality-box {
+			position: relative;
+			padding: 60px 32px 32px 32px;
+			border-radius: 20px;
+			border: 2px solid $white;
+			text-align: center;
+			.title {
+				@include pos(0, -2px, auto, -2px);
+				@include text($black, 24px, 600);
+				padding: 7px 15px;
+				background: $white;
+				margin-bottom: 0;
+				border-radius: 20px 20px 0px 0px;
+				text-align: center;
+			}
+			img {
+				width: 100%;
+				max-width: 65px;
+				margin: 10px auto;
+			}
+			.text {
+				margin-bottom: 0;
+				@include text($white, 14px, 500, 2);
+			}
+		}
+	}
+}

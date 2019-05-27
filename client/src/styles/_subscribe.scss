@@ -1,0 +1,33 @@
+.section-subscribe {
+	position: relative;
+	padding: 80px 0;
+	&:before {
+		content: '';
+		@include pos(0,0,0,0);
+		z-index: 0;
+		background-color: rgba(93, 127, 170, 0.7);
+	}
+	img {
+		@include pos(0,0,0,0);
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: -1;
+	}
+	.section-title {
+		@include text($white, 30px, 600);
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	form {
+		@include flex(column, center, center);
+		input {
+			margin-bottom: 20px;
+			padding: 8px 14px;
+			background-color: $white;
+		}
+		.btn-custom {
+			padding: 12px 45px;
+		}
+	}
+}

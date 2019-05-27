@@ -1,0 +1,78 @@
+#contactPage {
+	.section-appointment {
+		padding: 100px 0;
+		.appointment-box {
+			padding: 15px;
+			position: relative;
+			border-radius: 20px;
+			border: 2px solid #dde4ea;
+			&.contact-info {
+				padding: 32px;
+			}
+			&.opening-hours {
+				border-color: #18a3eb;
+				padding: 32px;
+			}
+			&__title {
+				@include pos(-24px, unset, unset, -2px);
+				@include text($black, 24px, 600);
+				padding: 0 15px;
+				background: #fff;
+				margin-bottom: 0;
+			}
+			&__text {
+				@include text(#828282, 13px, 400);
+				margin-bottom: 0;
+				font-style: italic;
+			}
+			.list {
+				list-style: none;
+				&__item {
+					@include flex(row, space-between, center);
+					@include text(#828282, 16px, 500);
+					margin-bottom: 10px;
+				}
+			}
+			.phone-box {
+				margin: 24px auto;
+				max-width: 190px;
+			}
+			form {
+				@include flex(row, space-between, center);
+				flex-wrap: wrap;
+				input, textarea {
+					width: calc(50% - 5px);
+				}
+				textarea {
+					width: 100%;
+					resize: none;
+				}
+				.btn-custom {
+					border: none;
+					margin-top: 15px;
+					width: 100%;
+					max-width: 220px;
+				}
+			}
+		}
+	}
+	.contact-form {
+		margin-bottom: 100px;
+		.container {
+			max-width: 860px;
+		}
+		.title {
+			@include text($black, 24px, 600);
+			margin-bottom: 25px;
+		}
+		form {
+			input, textarea {
+				margin-bottom: 30px;
+			}
+			.btn-custom {
+				padding-left: 45px;
+				padding-right: 45px;
+			}
+		}
+	}
+}

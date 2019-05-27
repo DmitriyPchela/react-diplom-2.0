@@ -1,0 +1,156 @@
+#homePage {
+	.section-header-slide {
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+		.swiper-pagination {
+			@include pos(50%, unset, unset, 0, absolute);
+			transform: translateY(-50%);
+			width: 120px;
+			span {
+				@include text(#aaaaaa, 16px, 600);
+				display: block;
+				width: 100%;
+				text-align: right;
+				margin-bottom: 15px;
+				border-radius: 0;
+				border-bottom: 2px solid transparent;
+				background: transparent;
+				opacity: 1;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+		.swiper-slide {
+			height: 700px;
+			&__bg {
+				@include pos(0, 0, 0, 0);
+				z-index: -1;
+				object-fit: cover;
+			}
+			&__info {
+				@include flex(column, center, flex-start);
+				position: relative;
+				z-index: 1;
+				height: 100%;
+				&__title {
+					@include text($black, 60px, 600, 1.2);
+					margin-bottom: 20px;
+				}
+				&__text {
+					@include text($black, 14px, 400, 2);
+					margin-bottom: 20px;
+				}
+				&__btn-more {
+					font-weight: 600;
+					padding: 10px 40px;
+				}
+			}
+		}
+	}
+
+	.section-appointment {
+		padding: 100px 0;
+		.appointment-box {
+			padding: 15px;
+			position: relative;
+			border-radius: 20px;
+			border: 2px solid #dde4ea;
+			&.opening-hours {
+				border-color: #18a3eb;
+				padding: 32px;
+			}
+			&__title {
+				@include pos(-24px, unset, unset, -2px);
+				@include text($black, 24px, 600);
+				padding: 0 15px;
+				background: #fff;
+				margin-bottom: 0;
+			}
+			&__text {
+				@include text(#828282, 13px, 400);
+				margin-bottom: 0;
+				font-style: italic;
+			}
+			.list {
+				list-style: none;
+				&__item {
+					@include flex(row, space-between, center);
+					@include text(#828282, 16px, 500);
+					margin-bottom: 10px;
+				}
+			}
+			.phone-box {
+				margin: 24px auto;
+				max-width: 190px;
+			}
+			form {
+				@include flex(row, space-between, center);
+				flex-wrap: wrap;
+				input, textarea {
+					width: calc(50% - 5px);
+				}
+				textarea {
+					width: 100%;
+					resize: none;
+				}
+				.btn-custom {
+					border: none;
+					margin-top: 15px;
+					width: 100%;
+					max-width: 220px;
+				}
+			}
+		}
+	}
+
+	.section-news {
+		padding-bottom: 60px;
+		.section-title {
+			@include text($black, 48px, 600);
+			margin-bottom: 80px;
+			text-align: center;
+		}
+		.news-box {
+			&__image {
+				width: 100%;
+				height: 275px;
+				margin-bottom: 20px;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+			&__header {
+				margin-bottom: 30px;
+				&__title {
+					@include text($black, 20px, 600);
+					margin-bottom: 10px;
+				}
+				&__posted {
+					@include flex(row, space-between, center);
+					&__date {
+						@include text($blue, 12px, 600);
+						span {
+							color: #828282;
+							margin-left: 5px;
+						}
+					}
+					&__author {
+						@include text($blue, 12px, 600);
+						a {
+							color: #828282;
+							margin-left: 5px;
+						}
+					}
+				}
+			}
+			&__info {
+				@include text(#828282, 14px, 400, 2);
+			}
+		}
+	}
+}
