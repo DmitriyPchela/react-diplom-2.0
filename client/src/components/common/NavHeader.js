@@ -1,15 +1,11 @@
 import React, {useEffect} from 'react';
 import {NavLink, Link} from "react-router-dom";
 
-import { connect } from 'react-redux';
-import { userActions } from '../_actions';
-
-
 const NavHeader = props => {
 	
-	useEffect(() => {
-		props.dispatch(userActions.getAll());
-	}, []);
+	// useEffect(() => {
+	// 	props.dispatch(userActions.getAll());
+	// }, []);
 	
 	return (
 		<header>
@@ -48,12 +44,4 @@ const NavHeader = props => {
 	);
 };
 
-function mapStateToProps(state) {
-	const { authentication } = state;
-	const { user } = authentication;
-	return {
-		user
-	};
-}
-
-export default connect(mapStateToProps)(NavHeader);
+export default NavHeader;

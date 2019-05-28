@@ -9,7 +9,7 @@ const appointmentData = {
 	comment: ''
 };
 
-const HomePage = (props) => {
+const HomePage = props => {
 	const [data, setData] = useState(appointmentData);
 	
 	const handleChange = (e) => {
@@ -19,7 +19,6 @@ const HomePage = (props) => {
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('Submit');
 	};
 	
 	return (

@@ -8,13 +8,13 @@ module.exports = async  (req, res, next) => {
     const token = req.headers['Authorization'];
     let isTrustedUser = true;
 
-    try {
-        const profile = User.get({ token });
-
-        if(profile) { isTrustedUser = true; }
-    } catch (err) {
-        next(err)
-    }
+    // try {
+    //     const profile = User.get({ token });
+    //
+    //     if (profile) { isTrustedUser = true; }
+    // } catch (err) {
+    //     next(err)
+    // }
 
     if (isTrustedUser) {
         next();

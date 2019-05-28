@@ -1,77 +1,63 @@
 import React, {useState, useEffect} from 'react';
-import { connect } from 'react-redux';
-import {alertActions, userActions} from '../_actions';
-import {history} from "../_helpers";
+import { withRouter } from 'react-router'
 import "bootstrap/dist/js/bootstrap.bundle";
 
-
-import HeaderPage from "../_common/HeaderPage";
+import { authApi } from "../../api/authApi";
+import HeaderPage from "../common/HeaderPage";
 import LoginForm from "./LoginForm";
+import {usersApi} from "../../api";
 
 
-const userLogin = {
-    username: '',
+const userAuth = {
+    login: '',
     password: '',
 };
 
 const LoginPage = props => {
-    useEffect(() => {
-        props.dispatch(userActions.logout());
-    }, []);
+    const [user, setUser] = useState(userAuth);
+    const [errors, setErrors] = useState({});
+    const [isSuccess, setSuccess] = useState(false);
     
-    const [user, setUser] = useState(userLogin);
-    const [isSubmit, setSubmit] = useState(false);
+    const validate = (data) => {
+        const errors = {};
+        if (!data.login) errors.login = "Поле логін обов'язкове";
+        if (!data.password || data.password.length < 6) errors.password = "Поле пароль обов'язкове";
+        
+        return errors;
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUser({...user, [name]:value})
     };
-    
-    history.listen((location, action) => {
-        props.dispatch(alertActions.clear());
-    });
 
     const handleSubmit = (e) => {
         e.preventDefault();
     
-        setSubmit(true);
-        const {username, password} = user;
-        if (username && password) {
-            props.dispatch(userActions.login(username, password));
+        const errors = validate(user);
+        setErrors(errors);
+        if (Object.keys(errors).length === 0) {
+            setSuccess(true);
+            authApi.login(user).then(res => {
+                if (res.data.status === 'success') {
+                    props.history.push('/account');
+                } else {
+                    alert(res.data.message);
+                }
+            });
         }
     };
-    
+
     return (
         <main id="login-page">
             <HeaderPage bgImage="images/about-bg.png" pageLink="/login" pageName="Авторизація"/>
             <div className="section-login">
                 <div className="container">
-                    {
-                        props.alert.message &&
-                        <div className={`alert ${props.alert.type}`}>
-                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            {
-                                props.alert.type === 'alert-success' ? <h4 className="alert-heading">Вітаємо!</h4> : ''
-                            }
-                            {props.alert.message}
-                        </div>
-                    }
-                    <LoginForm username={user.username} password={user.password} isSubmit={isSubmit} onSubmit={handleSubmit} onChange={handleChange}/>
+                    <LoginForm errors={errors} onSubmit={handleSubmit} onChange={handleChange}/>
                 </div>
             </div>
         </main>
     );
 };
 
-function mapStateToProps(state) {
-    const { alert } = state;
-    const { loggingIn } = state.authentication;
-    return {
-        loggingIn,
-        alert
-    };
-}
-
-export default connect(mapStateToProps)(LoginPage)
+export default withRouter(LoginPage)

@@ -21,6 +21,7 @@ module.exports = function (err, req, res, next) {
 
     if (!production) {
         result.data.info = tmpError.data;
+        result.data.stack = tmpError.stack;
     }
 
     switch (tmpError.name) {

@@ -1,6 +1,8 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
-const News = (props) => {
+
+const News = props => {
 	return (
 		<section className="section-news">
 			<div className="container">
@@ -8,9 +10,9 @@ const News = (props) => {
 				<div className="row">
 					<div className="col-12 col-md-6 col-lg-4">
 						<div className="news-box">
-							<a href="#" className="news-box__image">
+							<Link to="/news" className="news-box__image">
 								<img src="images/hero.jpg" alt="News img"/>
-							</a>
+							</Link>
 							<div className="news-box__header">
 								<h3 className="news-box__header__title">Нові технології в медицині</h3>
 								<div className="news-box__header__posted">
@@ -20,7 +22,7 @@ const News = (props) => {
 									</div>
 									<div className="news-box__header__posted__author">
 										Site:
-										<a href="#">site-example.com</a>
+										<Link to="/news">site-example.com</Link>
 									</div>
 								</div>
 							</div>
@@ -35,9 +37,9 @@ const News = (props) => {
 					</div>
 					<div className="col-12 col-md-6 col-lg-4">
 						<div className="news-box">
-							<a href="#" className="news-box__image">
+							<Link to="/news" className="news-box__image">
 								<img src="images/hero.jpg" alt="News img"/>
-							</a>
+							</Link>
 							<div className="news-box__header">
 								<h3 className="news-box__header__title">Нові технології в медицині</h3>
 								<div className="news-box__header__posted">
@@ -47,7 +49,7 @@ const News = (props) => {
 									</div>
 									<div className="news-box__header__posted__author">
 										Site:
-										<a href="#">site-example.com</a>
+										<Link to="/news">site-example.com</Link>
 									</div>
 								</div>
 							</div>
@@ -62,9 +64,9 @@ const News = (props) => {
 					</div>
 					<div className="col-12 col-md-6 col-lg-4">
 						<div className="news-box">
-							<a href="#" className="news-box__image">
+							<Link to="/news" className="news-box__image">
 								<img src="images/hero.jpg" alt="News img"/>
-							</a>
+							</Link>
 							<div className="news-box__header">
 								<h3 className="news-box__header__title">Нові технології в медицині</h3>
 								<div className="news-box__header__posted">
@@ -74,7 +76,7 @@ const News = (props) => {
 									</div>
 									<div className="news-box__header__posted__author">
 										Site:
-										<a href="#">site-example.com</a>
+										<Link to="/news">site-example.com</Link>
 									</div>
 								</div>
 							</div>

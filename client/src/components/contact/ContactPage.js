@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import HeaderPage from "../_common/HeaderPage";
+import HeaderPage from "../common/HeaderPage";
 import InputMask from "react-input-mask";
 
 const appointmentData = {

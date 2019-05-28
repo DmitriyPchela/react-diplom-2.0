@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 
-import HeaderPage from "../_common/HeaderPage";
+import HeaderPage from "../common/HeaderPage";
 import DiaryForm from "./DiaryForm";
 
 const DiaryPage = () => {

@@ -1,10 +1,10 @@
 import { request } from './request';
 
-export const userAuthApi = {
-	list: (filters) => {
+export const usersApi = {
+	list: () => {
 		return request({
 			url: "/users",
-			method: 'POST',
+			method: 'GET',
 		})
 	},
 

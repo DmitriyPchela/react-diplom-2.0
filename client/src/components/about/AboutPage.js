@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import Collapsible from 'react-collapsible';
 
 
-import HeaderPage from "../_common/HeaderPage";
+import HeaderPage from "../common/HeaderPage";
 
 
 const AboutPage = () => {
@@ -26,7 +26,7 @@ const AboutPage = () => {
 						</div>
 						<div className="col-12 col-lg-6 mt-5 mt-lg-0">
 							<div className="image-block">
-								<img src="images/about-img.jpg" alt="About image"/>
+								<img src="images/about-img.jpg" alt="About"/>
 							</div>
 						</div>
 					</div>
@@ -76,7 +76,7 @@ const AboutPage = () => {
 								<div className="col-12 col-md-6">
 									<div className="professional-box">
 										<h2 className="title">Проффесіоналізм</h2>
-										<img src="images/cardiogram-2.png" alt="Faq image"/>
+										<img src="images/cardiogram-2.png" alt="Faq"/>
 										<p className="text">
 											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 										</p>
@@ -85,7 +85,7 @@ const AboutPage = () => {
 								<div className="col-12 col-md-6">
 									<div className="quality-box">
 										<h2 className="title">Якість</h2>
-										<img src="images/hospital.png" alt="Faq image"/>
+										<img src="images/hospital.png" alt="Faq"/>
 										<p className="text">
 											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 										</p>

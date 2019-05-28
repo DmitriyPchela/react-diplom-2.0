@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
-import {userActions} from "../_actions";
 import {connect} from "react-redux";
 
 
 const ModalSuccess = props => {
 	useEffect(() => {
-		props.dispatch(userActions.getAll());
+		// props.dispatch(userActions.getAll());
 	}, []);
 	
 	const modalClose = () => {
@@ -31,12 +30,12 @@ const ModalSuccess = props => {
 	);
 };
 
-function mapStateToProps(state) {
-	const { authentication } = state;
-	const { user } = authentication;
-	return {
-		user
-	};
-}
+// function mapStateToProps(state) {
+// 	const { authentication } = state;
+// 	const { user } = authentication;
+// 	return {
+// 		user
+// 	};
+// }
 
-export default connect(mapStateToProps)(ModalSuccess);
+export default ModalSuccess;

@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderPage from "../_common/HeaderPage";
+import HeaderPage from "../common/HeaderPage";
 
 const NewsPage = () => {
 	return (

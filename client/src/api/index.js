@@ -1,2 +1,3 @@
 export * from './userStatusApi';
-export * from './userAuthApi';
+export * from './usersApi';
+export * from './authApi';

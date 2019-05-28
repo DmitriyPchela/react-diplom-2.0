@@ -2,18 +2,17 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions } from '../_actions';
-import HeaderPage from "../_common/HeaderPage";
+import HeaderPage from "../common/HeaderPage";
 
 const AccountPage = props => {
     useEffect(() => {
-        props.dispatch(userActions.getAll());
+        // props.dispatch(userActions.getAll());
     }, []);
 
     const handleLogOut = () => {
-        props.dispatch(userActions.logout());
+        // props.dispatch(userActions.logout());
     };
-    
+
     // const handleDeleteUser = (id) => {
     //     return (e) => props.dispatch(userActions.delete(id));
     // };
@@ -31,7 +30,7 @@ const AccountPage = props => {
                         </div>
                         <div className="col-4">
                             <div className="user-info-first">
-                                <h2 className="user-info-first__name">{props.user.firstName + ' ' + props.user.lastName}</h2>
+                                <h2 className="user-info-first__name"/>
                                 <div className="user-info-first__links">
                                     <Link to="/edit" className="btn-custom">Редагувати</Link>
                                     <Link to="/" className="btn-custom" onClick={handleLogOut}>Вийти</Link>
@@ -46,15 +45,15 @@ const AccountPage = props => {
                                     <>
                                         <div className="user-info-second__item">
                                             <span className="field-name">Логін: </span>
-                                            <span className="field-text">{props.user.username}</span>
+                                            <span className="field-text"></span>
                                         </div>
                                         <div className="user-info-second__item">
                                             <span className="field-name">Email: </span>
-                                            <span className="field-text">{props.user.email}</span>
+                                            <span className="field-text"></span>
                                         </div>
                                         <div className="user-info-second__item">
                                             <span className="field-name">Номер телефону: </span>
-                                            <span className="field-text">{props.user.phone}</span>
+                                            <span className="field-text"></span>
                                         </div>
                                     </>
                             }

@@ -6,8 +6,8 @@ router
     .post('/auth/login', async function (req, res, next) {
         const { login, password} = req.body;
 
-       try {
-           const profile = User.get({
+        try {
+           const profile = await User.findOne({
                login,
                password,
            });
@@ -20,11 +20,15 @@ router
                });
 
                res.json({
-                   token
+                   token,
+                   status: 'success',
+               })
+           } else {
+               res.json({
+                   status: 'error',
+                   message: 'User not found'
                })
            }
-
-           res.json('Logged in');
        } catch (err) {
            next(err)
        }
@@ -34,7 +38,7 @@ router
         const token = req.headers['Authorization'];
 
         try {
-            const profile = User.get({
+            const profile = await User.get({
                 token
             });
 

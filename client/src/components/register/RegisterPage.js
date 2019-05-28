@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
-import { userAuthApi } from "../../api";
+import {withRouter} from "react-router-dom";
 
-import {alertActions, userActions} from '../_actions';
-import HeaderPage from "../_common/HeaderPage";
+import {healthStatusApi, usersApi} from "../../api";
+import HeaderPage from "../common/HeaderPage";
 import RegisterForm from "./RegisterForm";
-import {history} from "../_helpers";
 
 const userData = {
 	name: '',
@@ -18,7 +16,18 @@ const userData = {
 
 const RegisterPage = props => {
 	const [user, setUser] = useState(userData);
-	const [isSubmit, setSubmit] = useState(false);
+	const [errors, setErrors] = useState({});
+	const [isSuccess, setSuccess] = useState(false);
+	
+	const validate = (data) => {
+		const errors = {};
+		if (!data.login) errors.login = "Поле логін обов'язкове";
+		if (!data.password || data.password.length < 6) errors.password = "Поле пароль обов'язкове";
+		if (!data.email) errors.email = "Поле email обов'язкове";
+		if (!data.phone) errors.phone = "Поле телефон обов'язкове";
+		
+		return errors;
+	};
 	
 	const handleChange = (e) => {
 		const {name, value} = e.target;
@@ -27,43 +36,24 @@ const RegisterPage = props => {
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setSubmit(true);
-		if (user.name && user.surname && user.login && user.password  && user.email && user.phone) {
-			console.log(user);
-			userAuthApi.create(user);
+		
+		const errors = validate(user);
+		setErrors(errors);
+		if (Object.keys(errors).length === 0) {
+			setSuccess(true);
+			usersApi.create(user);
+			props.history.push('/login');
 		}
 	};
-	
-	// history.listen((location, action) => {
-	// 	props.dispatch(alertActions.clear());
-	// });
 	
 	return (
 		<main id="registration-page">
 			<HeaderPage bgImage="images/about-bg.png" pageLink="/registration" pageName="Реєстрація"/>
 			<section className="section-register">
-				{
-					props.alert.message &&
-					<div className={`alert ${props.alert.type}`}>
-						<button type="button" className="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						{props.alert.message}
-					</div>
-				}
-				<RegisterForm user={user} isSubmit={isSubmit} onChange={handleChange} onSubmit={handleSubmit}/>
+				<RegisterForm errors={errors} onChange={handleChange} onSubmit={handleSubmit}/>
 			</section>
 		</main>
 	);
 };
 
-function mapStateToProps(state) {
-	const { alert } = state;
-	const { registering } = state.registration;
-	return {
-		registering,
-		alert
-	};
-}
-
-export default connect(mapStateToProps)(RegisterPage);
+export default withRouter(RegisterPage);
