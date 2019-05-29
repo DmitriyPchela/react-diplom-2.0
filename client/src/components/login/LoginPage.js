@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 const userAuth = {
     login: '',
     password: '',
+    isAuth: false
 };
 
 const LoginPage = props => {
@@ -40,8 +41,7 @@ const LoginPage = props => {
         if (Object.keys(errors).length === 0) {
             authApi.login(user).then(res => {
                 if (res.data.status === 'success') {
-                    props.setUserProfile({user, token: res.data.data.token});
-
+                    props.setUserProfile({login: user.login});
                     props.history.push('/account');
                 } else {
                     alert(res.data.message);
@@ -49,7 +49,9 @@ const LoginPage = props => {
             });
         }
     };
-
+    
+    console.log(user);
+    
     return (
         <main id="login-page">
             <HeaderPage bgImage="images/about-bg.png" pageLink="/login" pageName="Авторизація"/>

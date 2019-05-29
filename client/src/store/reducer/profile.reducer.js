@@ -1,20 +1,22 @@
-import { SET_USER_PROFILE } from '../actionTypes';
+import { SET_USER_PROFILE, DELETE_USER_PROFILE } from '../actionTypes';
 import LC from "local-storage";
 
-const defaultState = {
-	isAuth: false,
-};
+const initialState = {};
 
-export default (state = defaultState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case SET_USER_PROFILE: {
-			LC.set('profile', action.payload.user);
-			LC.set('token', action.payload.token);
-
+			LC.set('profile', action.payload);
+			return {
+				...state
+			}
+		}
+		case DELETE_USER_PROFILE: {
+			LC.clear();
 			return {
 				...state,
-				isAuth: LC.get('profile') !== null
-			};
+				isAuth: false
+			}
 		}
 		default:
 			return state;

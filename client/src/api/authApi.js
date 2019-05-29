@@ -9,6 +9,13 @@ export const authApi = {
 		})
 	},
 
+	logout: () => {
+		return request({
+			url: '/auth/logout',
+			method: 'POST'
+		})
+	},
+	
 	isAuthorized: ({ login, token }) => {
 		return request({
 			url: '/auth/isAuthorized',
@@ -16,11 +23,4 @@ export const authApi = {
 			data: { login, token  }
 		})
 	},
-
-	logout: () => {
-		return request({
-			url: '/auth/logout',
-			method: 'POST'
-		})
-	}
 };

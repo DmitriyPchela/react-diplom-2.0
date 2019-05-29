@@ -1,5 +1,6 @@
-import { setUserProfile } from './profile.action';
+import { setUserProfile, deleteUserProfile } from './profile.action';
 
 export {
 	setUserProfile,
+	deleteUserProfile
 };
