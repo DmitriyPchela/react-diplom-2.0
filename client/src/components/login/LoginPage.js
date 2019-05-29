@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import { withRouter } from 'react-router'
+import React, { useState, useEffect } from 'react';
+import LC from "local-storage";
+
 import "bootstrap/dist/js/bootstrap.bundle";
 
+import { setUserProfile } from "../../store/actions/profile.action";
 import { authApi } from "../../api/authApi";
 import HeaderPage from "../common/HeaderPage";
 import LoginForm from "./LoginForm";
-import {usersApi} from "../../api";
+import {connect} from "react-redux";
 
 
 const userAuth = {
@@ -16,7 +18,6 @@ const userAuth = {
 const LoginPage = props => {
     const [user, setUser] = useState(userAuth);
     const [errors, setErrors] = useState({});
-    const [isSuccess, setSuccess] = useState(false);
     
     const validate = (data) => {
         const errors = {};
@@ -37,9 +38,10 @@ const LoginPage = props => {
         const errors = validate(user);
         setErrors(errors);
         if (Object.keys(errors).length === 0) {
-            setSuccess(true);
             authApi.login(user).then(res => {
                 if (res.data.status === 'success') {
+                    props.setUserProfile({user, token: res.data.data.token});
+
                     props.history.push('/account');
                 } else {
                     alert(res.data.message);
@@ -53,6 +55,12 @@ const LoginPage = props => {
             <HeaderPage bgImage="images/about-bg.png" pageLink="/login" pageName="Авторизація"/>
             <div className="section-login">
                 <div className="container">
+                    {/*{*/}
+                    {/*    (<div className="alert alert-success" role="alert">*/}
+                    {/*        <h4 className="alert-heading">Вітаємо!</h4>*/}
+                    {/*        <p>Реєстрація пройшла успішно, введіть ваш логін та пароль щоб увійти до особістого кабінету</p>*/}
+                    {/*    </div>)*/}
+                    {/*}*/}
                     <LoginForm errors={errors} onSubmit={handleSubmit} onChange={handleChange}/>
                 </div>
             </div>
@@ -60,4 +68,13 @@ const LoginPage = props => {
     );
 };
 
-export default withRouter(LoginPage)
+const mapStateToProps = (state) => {
+    const { profile } = state;
+    return {
+        profile
+    };
+};
+
+export default connect(
+    mapStateToProps, { setUserProfile }
+)(LoginPage);

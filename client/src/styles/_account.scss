@@ -1,6 +1,13 @@
 #account-page {
 	.section-account {
 		padding: 60px 0;
+		p {
+			text-align: center;
+			@include text($black, 16px, 300);
+			opacity: 0.4;
+			font-style: italic;
+		}
+
 		.user-photo-box {
 			width: 150px;
 			overflow: hidden;
@@ -25,14 +32,10 @@
 			}
 		}
 		.user-info-second {
+			@include flex(column, center, flex-start);
 			height: 100%;
 			border-left: 2px dashed #ccc;
 			padding-left: 30px;
-			p {
-				@include text($black, 16px, 300);
-				opacity: 0.4;
-				font-style: italic;
-			}
 			&__item {
 				margin-bottom: 10px;
 				@include flex(row, flex-start, center);

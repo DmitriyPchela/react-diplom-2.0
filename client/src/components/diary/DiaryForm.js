@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { healthStatusApi, usersApi } from '../../api';
+import { healthStatusApi } from '../../api';
+import LC from "local-storage";
+
 
 import InputText from "../common/formComponents/InputText";
 import InputSelect from "../common/formComponents/InputSelect";
@@ -16,20 +18,24 @@ const healthyOptions = [
 ];
 
 const initialData = {
-	_id: null,
 	date: '',
 	time: new Date().toLocaleTimeString().replace("/.*({2}:{2}).*/", "$1"),
 	pressureUp: '',
 	pressureDown: '',
 	pulse: '',
 	healthy: 'default',
-	comment: ''
+	comment: '',
+	userID: ''
 };
 
 const DiaryForm = props => {
 	const [data, setData] = useState(initialData);
 	const [errors, setErrors] = useState({});
 	const [success, setSuccess] = useState(false);
+
+	useEffect(() => {
+		setData({...data, userID: LC.get('profile').login});
+	}, []);
 
 	const validate = (data) => {
 		const errors = {};

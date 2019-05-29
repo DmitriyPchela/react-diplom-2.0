@@ -1,10 +1,10 @@
 import { request } from './request';
 
 export const healthStatusApi = {
-    list: (filters) => {
+    list: () => {
         return request({
             url: "/health_status",
-            method: 'POST',
+            method: 'GET',
         })
     },
 

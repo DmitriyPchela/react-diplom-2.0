@@ -9806,6 +9806,7 @@ input, textarea {
   border: 1px solid #dde4ea;
   outline: none;
   resize: none;
+  cursor: pointer;
 }
 input::placeholder, textarea::placeholder {
   font-style: italic;
@@ -9853,6 +9854,12 @@ input::placeholder, textarea::placeholder {
   margin-bottom: 0;
   height: auto;
 }
+.form-container .form-group input, .form-container .form-group textarea {
+  cursor: text;
+}
+.form-container .form-group select {
+  cursor: pointer;
+}
 .form-container .form-group textarea {
   color: #404040;
   font-size: 16px;
@@ -9865,6 +9872,7 @@ input::placeholder, textarea::placeholder {
   width: 100%;
   max-width: 200px;
   margin: 15px auto 0 auto;
+  cursor: pointer;
 }
 
 header {
@@ -10128,6 +10136,7 @@ footer .footer-links ul li a {
   object-fit: cover;
 }
 #homePage .section-header-slide .swiper-slide__info {
+  padding-left: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10144,6 +10153,7 @@ footer .footer-links ul li a {
   margin-bottom: 20px;
 }
 #homePage .section-header-slide .swiper-slide__info__text {
+  max-width: 60%;
   color: #404040;
   font-size: 14px;
   font-weight: 400;
@@ -10518,6 +10528,15 @@ footer .footer-links ul li a {
 #account-page .section-account {
   padding: 60px 0;
 }
+#account-page .section-account p {
+  text-align: center;
+  color: #404040;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.4;
+  font-style: italic;
+}
 #account-page .section-account .user-photo-box {
   width: 150px;
   overflow: hidden;
@@ -10546,17 +10565,13 @@ footer .footer-links ul li a {
   margin-right: 0;
 }
 #account-page .section-account .user-info-second {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   height: 100%;
   border-left: 2px dashed #ccc;
   padding-left: 30px;
-}
-#account-page .section-account .user-info-second p {
-  color: #404040;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.5;
-  opacity: 0.4;
-  font-style: italic;
 }
 #account-page .section-account .user-info-second__item {
   margin-bottom: 10px;
@@ -10622,6 +10637,26 @@ footer .footer-links ul li a {
 }
 #diaryPage .section-services .form-container .form-group {
   max-width: 100%;
+}
+#diaryPage .section-services .form-container .form-group .select-wrapper {
+  position: relative;
+}
+#diaryPage .section-services .form-container .form-group .select-wrapper:before {
+  transform: translateY(-50%);
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #404040;
+  position: absolute;
+  top: 50%;
+  left: auto;
+  right: 10px;
+  bottom: auto;
+}
+#diaryPage .section-services .form-container .form-group .select-wrapper select {
+  -webkit-appearance: none;
 }
 #diaryPage .section-services .form-container .form-group .btn-custom {
   max-width: 200px;

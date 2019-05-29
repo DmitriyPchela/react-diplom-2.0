@@ -11,12 +11,14 @@ const InputSelect = ({name, label, value, error, small, className, options, onCh
 	return (
 		<div className={wrapClass}>
 			<label htmlFor={name}>{label}</label>
-			<select className="form-control" name={name} value={value} onChange={onChange}>
-				<option value="default" disabled>Оберіть Ваше самопочуття:</option>
-				{
-					options.map(opt => <option key={opt} value={opt}>{opt}</option>)
-				}
-			</select>
+			<div className="select-wrapper">
+				<select className="form-control" name={name} value={value} onChange={onChange}>
+					<option value="default" disabled>Оберіть Ваше самопочуття:</option>
+					{
+						options.map(opt => <option key={opt} value={opt}>{opt}</option>)
+					}
+				</select>
+			</div>
 			{
 				error && <div className="help-block">{error}</div>
 			}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Route, Switch, Redirect} from "react-router-dom"
 
 import HomePage from './home/HomePage'
@@ -11,23 +11,26 @@ import Footer from "./common/Footer";
 import RegisterPage from "./register/RegisterPage";
 import Login from "./login/LoginPage";
 import Account from "./account/AccountPage";
-
-
-const PrivateRoute = ({ component: Component, redirect, isAuth, ...rest }) => (
-	<Route
-		{...rest}
-		render={props =>
-			isAuth ? (
-				<Component {...props} />
-			) : (
-				<Redirect to={{ pathname: redirect }} />
-			)
-		}
-	/>
-);
-
+import {authApi } from '../api';
 
 const App = props => {
+	useEffect( async () => {
+		let profile = localStorage.getItem('profile');
+
+		if(!profile) { return }
+		profile = JSON.parse(profile);
+
+		const token = localStorage.getItem('token');
+
+		const response = await authApi.isAuthorized({
+			login: profile.login,
+			token: token && JSON.parse(token)
+		} );
+
+		console.log(response);
+	}, []);
+
+
 	return (
 		<>
 			<NavHeader/>
@@ -39,7 +42,7 @@ const App = props => {
 				<Route path="/services" component={DiaryPage}/>
 				<Route path="/registration" component={RegisterPage}/>
 				<Route path="/login" component={Login}/>
-				<PrivateRoute path="/account" redirect="/login" component={Account}/>
+				<Route path="/account" component={Account}/>
 			</Switch>
 			<Footer/>
 		</>

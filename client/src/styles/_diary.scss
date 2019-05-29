@@ -31,6 +31,22 @@
 			margin: 0 auto;
 			.form-group {
 				max-width: 100%;
+				.select-wrapper {
+					position: relative;
+					&:before {
+						transform: translateY(-50%);
+						content: '';
+						width: 0;
+						height: 0;
+						border-left: 5px solid transparent;
+						border-right: 5px solid transparent;
+						border-top: 5px solid $black;
+						@include pos(50%, 10px, auto, auto);
+					}
+					select {
+						-webkit-appearance: none;
+					}
+				}
 				.btn-custom {
 					max-width: 200px;
 				}

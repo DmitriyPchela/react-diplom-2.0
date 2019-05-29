@@ -1,12 +1,10 @@
-import React, {useEffect} from 'react';
-import {NavLink, Link} from "react-router-dom";
+import React, { useEffect } from 'react';
+import { NavLink, Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import LC from "local-storage";
+
 
 const NavHeader = props => {
-	
-	// useEffect(() => {
-	// 	props.dispatch(userActions.getAll());
-	// }, []);
-	
 	return (
 		<header>
 			<div className="container nav-header-box">
@@ -21,14 +19,15 @@ const NavHeader = props => {
 				</nav>
 				<div className="login-box">
 					{
-						props.user ?
+						props.isAuth ?
 							<div className="phone-box">
 								<Link to="/account">
 									<img src="images/user.svg" alt="Call icon"/>
 									Особистий кабінет
 								</Link>
 							</div>
-							: <>
+							:
+							<>
 								<Link to="/registration" className="register-link">Реєстрація</Link>
 								<div className="phone-box">
 									<Link to="/login">
@@ -44,4 +43,4 @@ const NavHeader = props => {
 	);
 };
 
-export default NavHeader;
+export default withRouter(NavHeader);

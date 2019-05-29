@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
-import {withRouter} from "react-router-dom";
+import React, { useState } from 'react';
 
-import {healthStatusApi, usersApi} from "../../api";
+import { usersApi } from "../../api";
 import HeaderPage from "../common/HeaderPage";
 import RegisterForm from "./RegisterForm";
 
@@ -17,7 +16,7 @@ const userData = {
 const RegisterPage = props => {
 	const [user, setUser] = useState(userData);
 	const [errors, setErrors] = useState({});
-	const [isSuccess, setSuccess] = useState(false);
+	const [loading, setLoading] = useState(false);
 	
 	const validate = (data) => {
 		const errors = {};
@@ -40,12 +39,11 @@ const RegisterPage = props => {
 		const errors = validate(user);
 		setErrors(errors);
 		if (Object.keys(errors).length === 0) {
-			setSuccess(true);
 			usersApi.create(user);
 			props.history.push('/login');
 		}
 	};
-	
+
 	return (
 		<main id="registration-page">
 			<HeaderPage bgImage="images/about-bg.png" pageLink="/registration" pageName="Реєстрація"/>
@@ -56,4 +54,4 @@ const RegisterPage = props => {
 	);
 };
 
-export default withRouter(RegisterPage);
+export default RegisterPage;
