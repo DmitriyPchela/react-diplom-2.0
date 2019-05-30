@@ -4,14 +4,16 @@ import LC from "local-storage";
 
 import { usersApi, healthStatusApi } from "../../api";
 import HeaderPage from "../common/HeaderPage";
+import {connect} from "react-redux";
+import { deleteUserProfile } from "../../store/actions";
 
-const AccountPage = ({isAuth}) => {
+const AccountPage = props => {
     const [user, setUser] = useState({});
     const [healthData, setHealthData] = useState({});
     const [loading, setLoading] = useState(true);
 
     const logout = () => {
-        LC.clear();
+        props.deleteUserProfile();
     };
 
     const getCurrentUser = (users) => {
@@ -135,4 +137,13 @@ const AccountPage = ({isAuth}) => {
     );
 };
 
-export default AccountPage;
+const mapStateToProps = (state) => {
+    const { profile } = state;
+    return {
+        profile
+    };
+};
+
+export default connect(
+    mapStateToProps, { deleteUserProfile }
+)(AccountPage);
