@@ -9,7 +9,7 @@ import App from './components/App';
 
 render(
 	<Provider store={store}>
-		<Router onUpdate={() => window.scrollTo(0, 0)}>
+		<Router>
 			<App/>
 		</Router>
 	</Provider>,

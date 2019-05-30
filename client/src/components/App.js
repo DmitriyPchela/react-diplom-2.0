@@ -43,7 +43,7 @@ const App = props => {
 	return (
 		<>
 			<NavHeader isAuthorized={props.isAuth} />
-			<Switch>
+			<Switch onUpdate={() => window.scrollTo(0, 0)}>
 				<Route exact path="/" component={HomePage}/>
 				<Route path="/about" component={AboutPage}/>
 				<Route path="/contacts" component={ContactPage}/>

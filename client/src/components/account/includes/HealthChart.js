@@ -14,21 +14,30 @@ const HealthChart = ({healthData}) => {
 		const pressureDown = healthData.length > 0 && healthData.map(item => {
 			return item.pressureDown
 		});
+		const pulse = healthData.length > 0 && healthData.map(item => {
+			return item.pulse
+		});
 
 		let chartData = {
 			labels: date,
 			datasets: [
 				{
-					label: "My First dataset",
+					label: "Верхнее давление",
 					fill: false,
 					borderColor: 'rgb(255, 99, 132)',
 					data: pressureUp,
 				},
 				{
-					label: "My Second dataset",
+					label: "Нижнее давление",
 					fill: false,
 					borderColor: 'blue',
 					data: pressureDown,
+				},
+				{
+					label: "Пульс",
+					fill: false,
+					borderColor: 'orange',
+					data: pulse,
 				},
 			]
 		};
@@ -36,12 +45,10 @@ const HealthChart = ({healthData}) => {
 		setData(chartData);
 	}, [healthData]);
 
-	console.log(data.labels);
-
 	return (
 		<section className="section-health-chart">
 			<div className="container">
-				<h2 className="section-title">Графики изменений*</h2>
+				<h2 className="section-title">Графік стану здовров'я</h2>
 				{
 					data.labels !== false ? <Line data={data}/> : ''
 				}

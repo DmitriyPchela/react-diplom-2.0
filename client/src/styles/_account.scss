@@ -63,12 +63,19 @@
 				@include text($black, 16px, 300);
 				opacity: 0.4;
 				font-style: italic;
+				a {
+					color: $blue;
+					text-decoration: underline;
+				}
+
 			}
 			thead {
+				background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
 				tr {
 					th {
 						vertical-align: middle;
 						text-align: center;
+						color: $white;
 					}
 				}
 			}
@@ -79,6 +86,14 @@
 					}
 				}
 			}
+		}
+	}
+	.section-health-chart {
+		padding-bottom: 60px;
+		.section-title {
+			text-align: center;
+			margin-bottom: 30px;
+			@include text($black, 48px, 700);
 		}
 	}
 }

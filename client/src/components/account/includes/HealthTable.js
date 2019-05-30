@@ -1,13 +1,15 @@
 import React  from 'react';
+import {Link} from "react-router-dom";
+
 
 const HealthTable = ({loading, healthData}) => {
-
+	console.log(healthData);
 	return (
 		<section className="section-health-status">
 			<div className="container">
 				<h2 className="section-title">Стан здоровья</h2>
 				<table className="table table-bordered table-hover ">
-					<thead className="thead-dark">
+					<thead>
 					<tr>
 						<th scope="col" rowSpan="2">Дата</th>
 						<th scope="col" rowSpan="2">Час</th>
@@ -23,7 +25,13 @@ const HealthTable = ({loading, healthData}) => {
 					<tbody>
 					{
 						loading ? <tr><td colSpan="6"><p>Зачекайте будь-ласка, завантажуються дані об користувачеві</p></td></tr> :
-							healthData.length > 0 && (
+							healthData.length === 0 ?
+								<tr>
+									<td colSpan="6">
+										<p>Данні про стан здоров'я відсутні. Перейдіть до <Link to="/services">"Вашого щоденнику"</Link> та заповніть дані!</p>
+									</td>
+								</tr>
+								: healthData.length > 0 &&
 								healthData.map(item => {
 									return <tr key={item._id}>
 										<td>{item.date}</td>
@@ -34,7 +42,6 @@ const HealthTable = ({loading, healthData}) => {
 										<td>{item.healthy}</td>
 									</tr>
 								})
-							)
 					}
 					</tbody>
 				</table>

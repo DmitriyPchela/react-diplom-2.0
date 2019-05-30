@@ -10611,12 +10611,31 @@ footer .footer-links ul li a {
   opacity: 0.4;
   font-style: italic;
 }
+#account-page .section-health-status .table p a {
+  color: #18a3eb;
+  text-decoration: underline;
+}
+#account-page .section-health-status .table thead {
+  background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
+}
 #account-page .section-health-status .table thead tr th {
   vertical-align: middle;
   text-align: center;
+  color: #ffffff;
 }
 #account-page .section-health-status .table tbody tr td {
   text-align: center;
+}
+#account-page .section-health-chart {
+  padding-bottom: 60px;
+}
+#account-page .section-health-chart .section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 #diaryPage .section-info {

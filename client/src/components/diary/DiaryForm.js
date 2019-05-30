@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { healthStatusApi } from '../../api';
+import {Link} from "react-router-dom";
 import LC from "local-storage";
 
-
+import { healthStatusApi } from '../../api';
 import InputText from "../common/formComponents/InputText";
 import InputSelect from "../common/formComponents/InputSelect";
 import InputArea from "../common/formComponents/InputArea";
-import ModalSuccess from "./ModalSuccess";
+import ModalSuccess from "../common/ModalSuccess";
 
 const healthyOptions = [
 	"Задовільне",
@@ -51,20 +51,24 @@ const DiaryForm = props => {
 		return errors;
 	};
 
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setData({ ...data, [name]: value });
+	};
+	
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		
 		const errors = validate(data);
 		setErrors(errors);
 		if (Object.keys(errors).length === 0) {
-			setSuccess(true);
-			healthStatusApi.create(data).then(() => setData(initialData));
+			healthStatusApi.create(data).then(res => {
+				if (res.data.status === 'success') {
+					setSuccess(true);
+					return setData(initialData);
+				}
+			});
 		}
-	};
-
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setData({ ...data, [name]: value });
 	};
 
 	return (
@@ -94,6 +98,7 @@ const DiaryForm = props => {
 				label="Верхній тиск"
 				error={errors.pressureUp}
 				value={data.pressureUp}
+				minVal={50}
 				onChange={handleChange}
 				className="col-6"
 			/>
@@ -103,6 +108,7 @@ const DiaryForm = props => {
 				label="Нижній тиск"
 				error={errors.pressureDown}
 				value={data.pressureDown}
+				minVal={50}
 				onChange={handleChange}
 				className="col-6"
 			/>
@@ -112,6 +118,7 @@ const DiaryForm = props => {
 				label="Пульс"
 				error={errors.pulse}
 				value={data.pulse}
+				minVal={0}
 				onChange={handleChange}
 				className="col-12"
 			/>
@@ -134,7 +141,11 @@ const DiaryForm = props => {
 			<div className="form-group col-12 d-flex justify-content-center">
 				<button type="submit" className="btn-custom">Зберегти дані</button>
 			</div>
-			<ModalSuccess success={success} />
+			<ModalSuccess
+				title={'Ваші дані збережно!'}
+				desc={`Їх можно переглянути у особистому кабінеті!`}
+				success={success}
+			/>
 		</form>
 	);
 };

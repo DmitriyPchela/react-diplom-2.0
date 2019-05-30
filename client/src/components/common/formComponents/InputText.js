@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputText = ({name, label, type, value, error, small, className, onChange}) => {
+const InputText = ({name, label, type, value, error, small, minVal, maxVal, className, onChange}) => {
 	let wrapClass = `form-group`;
 	if (error !== '') {
 		wrapClass += ' has-error';
@@ -11,7 +11,7 @@ const InputText = ({name, label, type, value, error, small, className, onChange}
 	return (
 		<div className={wrapClass}>
 			<label htmlFor={name}>{label}</label>
-			<input type={type} className="form-control" name={name} value={value} onChange={onChange} autoComplete={value}/>
+			<input type={type} className="form-control" name={name} value={value} onChange={onChange} min={minVal}/>
 			{
 				error && <div className="help-block">{error}</div>
 			}
