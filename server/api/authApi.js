@@ -14,13 +14,13 @@ router
 
            if (profile) {
                const token = getToken();
-
-               await profile.save({
-                   token
-               });
+               profile.token = token;
+               await profile.save();
 
                res.json({
-                   token,
+                   data: {
+                       token
+                   },
                    status: 'success',
                })
            } else {
@@ -34,6 +34,39 @@ router
        }
     })
 
+    .post('/auth/isAuthorized', async (req, res) => {
+        const { token, login } = req.body;
+
+        const user = await User.findOne({
+            login,
+        })
+
+        if(user) {
+            console.log(token,  user.token);
+            const isAuthorized = token === user.token;
+
+            if(isAuthorized) {
+                res.json({
+                    status: 'success',
+                    data: {
+                        isAuthorized
+                    },
+                })
+            } else {
+                res.json({
+                    status: 'error',
+                    message: 'Token is not valid'
+                })
+            }
+
+        } else {
+            res.json({
+                status: 'error',
+                message: 'User not found'
+            })
+        }
+    })
+
     .post('/auth/logout', async (req, res) => {
         const token = req.headers['Authorization'];
 
@@ -42,7 +75,7 @@ router
                 token
             });
 
-            if(profile) {
+            if (profile) {
                 await profile.save({
                     token: ''
                 });

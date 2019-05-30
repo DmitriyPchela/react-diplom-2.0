@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { HealthStatus, User } = require('../database/db');
+const { HealthStatus } = require('../database/db');
 const accessMiddleware = require('../middleware/accessMiddleware');
 
 // THIS FUNC THROWS ERROR IF PARAMS IS WRONG -> CHECK ANOTHER ERRORS
@@ -62,9 +62,9 @@ router
         try {
             let healthStatus = new HealthStatus();
 
-            const { date, time, pressureUp, pressureDown, pulse, healthy, comment } = req.body;
+            const { date, time, pressureUp, pressureDown, pulse, healthy, comment, userID } = req.body;
 
-            Object.assign(healthStatus, { date, time, pressureUp, pressureDown, pulse, healthy, comment });
+            Object.assign(healthStatus, { date, time, pressureUp, pressureDown, pulse, healthy, comment, userID });
 
             const result = await healthStatus.save();
 
