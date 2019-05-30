@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { NavLink, Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import LC from "local-storage";
 
 
 const NavHeader = props => {
@@ -19,7 +17,7 @@ const NavHeader = props => {
 				</nav>
 				<div className="login-box">
 					{
-						props.isAuth ?
+						props.isAuthorized ?
 							<div className="phone-box">
 								<Link to="/account">
 									<img src="images/user.svg" alt="Call icon"/>

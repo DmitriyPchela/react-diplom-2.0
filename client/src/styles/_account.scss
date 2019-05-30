@@ -49,4 +49,36 @@
 			}
 		}
 	}
+	.section-health-status {
+		padding-bottom: 60px;
+		.section-title {
+			text-align: center;
+			margin-bottom: 30px;
+			@include text($black, 48px, 700);
+		}
+		.table {
+			p {
+				text-align: center;
+				margin-bottom: 0;
+				@include text($black, 16px, 300);
+				opacity: 0.4;
+				font-style: italic;
+			}
+			thead {
+				tr {
+					th {
+						vertical-align: middle;
+						text-align: center;
+					}
+				}
+			}
+			tbody {
+				tr {
+					td {
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
 }

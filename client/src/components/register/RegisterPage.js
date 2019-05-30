@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import { usersApi } from "../../api";
 import HeaderPage from "../common/HeaderPage";
 import RegisterForm from "./RegisterForm";
+import ModalSuccess from "../diary/ModalSuccess";
+
+import { usersApi } from "../../api";
 
 const userData = {
 	name: '',
@@ -16,7 +18,7 @@ const userData = {
 const RegisterPage = props => {
 	const [user, setUser] = useState(userData);
 	const [errors, setErrors] = useState({});
-	const [loading, setLoading] = useState(false);
+	const [success, setSuccess] = useState(false);
 	
 	const validate = (data) => {
 		const errors = {};
@@ -39,8 +41,9 @@ const RegisterPage = props => {
 		const errors = validate(user);
 		setErrors(errors);
 		if (Object.keys(errors).length === 0) {
-			usersApi.create(user);
-			props.history.push('/login');
+			usersApi.create(user).then(res => {
+				setSuccess(true);
+			});
 		}
 	};
 
@@ -50,8 +53,8 @@ const RegisterPage = props => {
 			<section className="section-register">
 				<RegisterForm errors={errors} onChange={handleChange} onSubmit={handleSubmit}/>
 			</section>
+			{/*<ModalSuccess success={success} />*/}
 		</main>
 	);
 };
-
 export default RegisterPage;

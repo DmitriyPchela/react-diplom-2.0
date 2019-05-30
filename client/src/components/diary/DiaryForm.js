@@ -34,7 +34,9 @@ const DiaryForm = props => {
 	const [success, setSuccess] = useState(false);
 
 	useEffect(() => {
-		setData({...data, userID: LC.get('profile').login});
+		if (LC.get('profile') != null) {
+			setData({...data, userID: LC.get('profile').login});
+		}
 	}, []);
 
 	const validate = (data) => {
@@ -87,7 +89,7 @@ const DiaryForm = props => {
 			/>
 
 			<InputText
-				type="text"
+				type="number"
 				name="pressureUp"
 				label="Верхній тиск"
 				error={errors.pressureUp}
@@ -96,7 +98,7 @@ const DiaryForm = props => {
 				className="col-6"
 			/>
 			<InputText
-				type="text"
+				type="number"
 				name="pressureDown"
 				label="Нижній тиск"
 				error={errors.pressureDown}
@@ -105,7 +107,7 @@ const DiaryForm = props => {
 				className="col-6"
 			/>
 			<InputText
-				type="text"
+				type="number"
 				name="pulse"
 				label="Пульс"
 				error={errors.pulse}

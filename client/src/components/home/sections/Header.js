@@ -5,7 +5,7 @@ import Swiper from "swiper/dist/js/swiper.esm.bundle";
 
 const Header = () => {
 	useEffect(() => {
-		let newSwiper = new Swiper('.swiper-container', {
+		new Swiper('.swiper-container', {
 			direction: 'horizontal',
 			loop: true,
 			pagination: {

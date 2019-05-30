@@ -19,7 +19,9 @@ router
 
                res.json({
                    data: {
-                       token
+                       token,
+                       profile,
+                       isAuthorized: true,
                    },
                    status: 'success',
                })
@@ -37,19 +39,19 @@ router
     .post('/auth/isAuthorized', async (req, res) => {
         const { token, login } = req.body;
 
-        const user = await User.findOne({
+        const profile = await User.findOne({
             login,
-        })
+        });
 
-        if(user) {
-            console.log(token,  user.token);
-            const isAuthorized = token === user.token;
+        if (profile) {
+            const isAuthorized = token === profile.token;
 
-            if(isAuthorized) {
+            if (isAuthorized) {
                 res.json({
                     status: 'success',
                     data: {
-                        isAuthorized
+                        isAuthorized,
+                        profile: profile,
                     },
                 })
             } else {
@@ -67,19 +69,34 @@ router
         }
     })
 
-    .post('/auth/logout', async (req, res) => {
-        const token = req.headers['Authorization'];
+    .post('/auth/logout', async (req, res, next) => {
+        // const token = req.headers['proxy-authorization'];
+        const { login } = req.body;
 
         try {
-            const profile = await User.get({
-                token
+            const user = await User.findOne({
+                login
             });
 
-            if (profile) {
-                await profile.save({
-                    token: ''
-                });
+            if (user) {
+                const isAuthorized = false;
+                user.token = '';
+
+                await user.save();
+
+                res.json({
+                    status: 'success',
+                    data: {
+                        isAuthorized
+                    },
+                })
+            } else {
+                res.json({
+                    status: 'error',
+                    message: 'Error while delete'
+                })
             }
+            console.log(user);
         } catch (err) {
             next(err)
         }

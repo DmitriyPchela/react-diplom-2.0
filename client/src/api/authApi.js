@@ -9,18 +9,19 @@ export const authApi = {
 		})
 	},
 
-	logout: () => {
+	logout: login  => {
 		return request({
 			url: '/auth/logout',
-			method: 'POST'
+			method: 'POST',
+			data: login
 		})
 	},
-	
+
 	isAuthorized: ({ login, token }) => {
 		return request({
 			url: '/auth/isAuthorized',
 			method: 'POST',
-			data: { login, token  }
+			data: { login, token }
 		})
 	},
 };

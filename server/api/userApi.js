@@ -36,7 +36,6 @@ router
 				data: result,
 			});
 		} catch (error) {
-			// AFTER THIS FUNC YOUR CODE GO TO ERRORSMIDDLWERE -> CHECK IT
 			next(error);
 		}
 	})

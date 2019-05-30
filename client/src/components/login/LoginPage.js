@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import LC from "local-storage";
+import React, { useState } from 'react';
 
 import "bootstrap/dist/js/bootstrap.bundle";
 
@@ -13,7 +12,6 @@ import {connect} from "react-redux";
 const userAuth = {
     login: '',
     password: '',
-    isAuth: false
 };
 
 const LoginPage = props => {
@@ -41,7 +39,11 @@ const LoginPage = props => {
         if (Object.keys(errors).length === 0) {
             authApi.login(user).then(res => {
                 if (res.data.status === 'success') {
-                    props.setUserProfile({login: user.login});
+                    props.setUserProfile({
+                        login: res.data.data.profile.login,
+                        token: res.data.data.token,
+                        isAuthorized: res.data.data.isAuthorized
+                    });
                     props.history.push('/account');
                 } else {
                     alert(res.data.message);
@@ -49,20 +51,12 @@ const LoginPage = props => {
             });
         }
     };
-    
-    console.log(user);
-    
+
     return (
         <main id="login-page">
             <HeaderPage bgImage="images/about-bg.png" pageLink="/login" pageName="Авторизація"/>
             <div className="section-login">
                 <div className="container">
-                    {/*{*/}
-                    {/*    (<div className="alert alert-success" role="alert">*/}
-                    {/*        <h4 className="alert-heading">Вітаємо!</h4>*/}
-                    {/*        <p>Реєстрація пройшла успішно, введіть ваш логін та пароль щоб увійти до особістого кабінету</p>*/}
-                    {/*    </div>)*/}
-                    {/*}*/}
                     <LoginForm errors={errors} onSubmit={handleSubmit} onChange={handleChange}/>
                 </div>
             </div>
@@ -70,11 +64,8 @@ const LoginPage = props => {
     );
 };
 
-const mapStateToProps = (state) => {
-    const { profile } = state;
-    return {
-        profile
-    };
+const mapStateToProps = ({ profile }) => {
+    return {profile};
 };
 
 export default connect(

@@ -1,25 +1,22 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
-import {connect} from "react-redux";
+import LC from "local-storage";
 
 
-const ModalSuccess = props => {
-	useEffect(() => {
-		// props.dispatch(userActions.getAll());
-	}, []);
+const ModalSuccess = ({title, desc, success}) => {
 	
 	const modalClose = () => {
 		document.getElementById('modal-success').classList.remove('show');
 	};
 	
 	return (
-		<div className={props.success ? 'modal-container show' : 'modal-container'} id="modal-success">
+		<div className={success ? 'modal-container show' : 'modal-container'} id="modal-success">
 			<div className="modal-box">
 				<div className="modal-header justify-content-center">
 					<h5 className="modal-title">Ваші дані збережно!</h5>
 				</div>
 				<div className="modal-body text-center">
-					Їх можно переглянути у <Link to={props.user ? '/account' : '/login'}>особистому кабінеті</Link>, якщо ви не зареєстровані, то спочатку
+					Їх можно переглянути у <Link to={LC.get('profile').isAuthorized ? '/account' : '/login'}>особистому кабінеті</Link>, якщо ви не зареєстровані, то спочатку
 					<Link to='/registration'> зарееструйтесь</Link>!
 				</div>
 				<div className="modal-footer">
@@ -29,13 +26,5 @@ const ModalSuccess = props => {
 		</div>
 	);
 };
-
-// function mapStateToProps(state) {
-// 	const { authentication } = state;
-// 	const { user } = authentication;
-// 	return {
-// 		user
-// 	};
-// }
 
 export default ModalSuccess;

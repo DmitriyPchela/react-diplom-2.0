@@ -10590,6 +10590,34 @@ footer .footer-links ul li a {
   font-weight: 600;
   margin-right: 20px;
 }
+#account-page .section-health-status {
+  padding-bottom: 60px;
+}
+#account-page .section-health-status .section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+#account-page .section-health-status .table p {
+  text-align: center;
+  margin-bottom: 0;
+  color: #404040;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.4;
+  font-style: italic;
+}
+#account-page .section-health-status .table thead tr th {
+  vertical-align: middle;
+  text-align: center;
+}
+#account-page .section-health-status .table tbody tr td {
+  text-align: center;
+}
 
 #diaryPage .section-info {
   padding: 60px 0;

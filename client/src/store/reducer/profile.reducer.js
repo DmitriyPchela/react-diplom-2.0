@@ -7,15 +7,16 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case SET_USER_PROFILE: {
 			LC.set('profile', action.payload);
+			const profile = LC.get('profile');
 			return {
-				...state
+				...state,
+				...profile,
 			}
 		}
 		case DELETE_USER_PROFILE: {
 			LC.clear();
 			return {
 				...state,
-				isAuth: false
 			}
 		}
 		default:
