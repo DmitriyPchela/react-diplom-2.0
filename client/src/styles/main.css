@@ -10760,5 +10760,19 @@ footer .footer-links ul li a {
   width: 100%;
   max-width: 160px;
 }
+#edit-page .section-health-table {
+  padding-bottom: 80px;
+}
+#edit-page .section-health-table .btn-row {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#edit-page .section-health-table .btn-row .btn-custom {
+  width: 100%;
+  max-width: 160px;
+}
 
 /*# sourceMappingURL=main.css.map */

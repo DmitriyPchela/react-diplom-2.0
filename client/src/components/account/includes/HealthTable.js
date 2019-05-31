@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 
 const HealthTable = ({loading, healthData}) => {
-	console.log(healthData);
 	return (
 		<section className="section-health-status">
 			<div className="container">

@@ -23,6 +23,7 @@ const App = props => {
 		(async function () {
 			if (LC.get('profile') !== null) {
 				let token = LC.get('profile').token;
+				let login = LC.get('profile').login;
 
 				const res = await authApi.isAuthorized({
 					token: token
@@ -31,6 +32,7 @@ const App = props => {
 				if (res.data.status === 'success') {
 					props.setUserProfile({
 						token: res.data.data.profile.token,
+						login: res.data.data.profile.login,
 						isAuthorized: res.data.data.isAuthorized
 					});
 				}

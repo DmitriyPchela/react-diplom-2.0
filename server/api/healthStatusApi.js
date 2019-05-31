@@ -20,6 +20,21 @@ router
             next(error);
         }
     })
+    
+    .post("/health_status/logged", accessMiddleware, async (req, res, next) => {
+        try {
+            const { login } = req.body;
+            const result = await HealthStatus.find({userID: login});
+            
+            res.json({
+                status: 'success',
+                data: result,
+            });
+            
+        } catch (error) {
+            next(error);
+        }
+    })
 
     // this is our update method
     // this method overwrites existing data in our database

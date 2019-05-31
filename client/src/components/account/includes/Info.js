@@ -8,8 +8,8 @@ import {deleteUserProfile} from "../../../store/actions";
 const Info = ({user, loading, ...props}) => {
 
 	const logout = () => {
-		let login = LC.get('profile').login;
-		authApi.logout({ login: login }).then(res => {
+		let token = LC.get('profile').token;
+		authApi.logout({ token: token }).then(res => {
 			props.deleteUserProfile();
 			window.location.reload();
 		});

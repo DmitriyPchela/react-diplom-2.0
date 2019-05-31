@@ -7,6 +7,14 @@ export const healthStatusApi = {
             method: 'GET',
         })
     },
+    
+    listUser: ({ login }) => {
+        return request({
+            url: "/health_status/logged",
+            method: 'POST',
+            data: { login }
+        })
+    },
 
     delete: (id) => {
         return request({

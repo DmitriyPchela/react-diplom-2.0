@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 import InputText from "../../common/formComponents/InputText";
-import { usersApi, healthStatusApi } from "../../../api";
+import { usersApi } from "../../../api";
 import InputMask from "react-input-mask";
 import LC from "local-storage";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const userData = {
 	name: '',
@@ -68,8 +67,6 @@ const EditInfo = () => {
 			});
 		}
 	};
-
-	console.log(success);
 
 	return (
 		<section className="section-edit-info">

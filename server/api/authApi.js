@@ -71,11 +71,11 @@ router
 
     .post('/auth/logout', async (req, res, next) => {
         // const token = req.headers['proxy-authorization'];
-        const { login } = req.body;
+        const { token } = req.body;
 
         try {
             const user = await User.findOne({
-                login
+                token
             });
 
             if (user) {
@@ -96,7 +96,6 @@ router
                     message: 'Error while delete'
                 })
             }
-            console.log(user);
         } catch (err) {
             next(err)
         }

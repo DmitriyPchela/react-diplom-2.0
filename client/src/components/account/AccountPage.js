@@ -24,7 +24,7 @@ const AccountPage = props => {
 
     const getUserHealth = (data) => {
         setHealthData(data.filter(item => {
-           return item.userID === LC.get('profile').token && item;
+           return item.userID === LC.get('profile').login && item;
         }));
     };
 

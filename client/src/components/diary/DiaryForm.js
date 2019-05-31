@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from "react-router-dom";
 import LC from "local-storage";
 
 import { healthStatusApi } from '../../api';
@@ -35,7 +34,7 @@ const DiaryForm = props => {
 
 	useEffect(() => {
 		if (LC.get('profile') != null) {
-			setData({...data, userID: LC.get('profile').token});
+			setData({...data, userID: LC.get('profile').login});
 		}
 	}, []);
 
@@ -141,11 +140,13 @@ const DiaryForm = props => {
 			<div className="form-group col-12 d-flex justify-content-center">
 				<button type="submit" className="btn-custom">Зберегти дані</button>
 			</div>
-			<ModalSuccess
-				title={'Ваші дані збережно!'}
-				desc={`Їх можно переглянути у особистому кабінеті!`}
-				success={success}
-			/>
+			{
+				success && <ModalSuccess
+					title={'Ваші дані збережно!'}
+					desc={`Їх можно переглянути у особистому кабінеті!`}
+					success={success ?  success : !success}
+				/>
+			}
 		</form>
 	);
 };

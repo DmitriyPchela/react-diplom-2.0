@@ -34,4 +34,15 @@
 			}
 		}
 	}
+	.section-health-table {
+		padding-bottom: 80px;
+		.btn-row {
+			padding-top: 15px;
+			@include flex(row, center, center);
+			.btn-custom {
+				width: 100%;
+				max-width: 160px;
+			}
+		}
+	}
 }
