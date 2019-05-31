@@ -2,10 +2,15 @@
 	position: relative;
 	padding: 160px 0 140px;
 	background-color: #f0f4f8;
+	.container {
+		position: relative;
+		z-index: 1;
+	}
 	img {
 		@include pos(0, 0, auto, auto);
 		width: auto;
 		height: 410px;
+		z-index: 0;
 	}
 	.title {
 		@include text($black, 48px, 600);

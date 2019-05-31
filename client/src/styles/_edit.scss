@@ -1,0 +1,37 @@
+#edit-page {
+	.section-edit-info {
+		padding: 30px 0 60px 0;
+		.link-back {
+			a {
+				text-decoration: underline;
+				@include text($blue, 16px);
+				i {
+					margin-right: 10px;
+				}
+			}
+		}
+		.form-container {
+			.col-6 {
+				&:first-child {
+					.form-group {
+						margin: 0 auto 10px 0;
+					}
+				}
+				&:last-child {
+					.form-group {
+						margin: 0 0 10px auto;
+					}
+				}
+			}
+			.form-group {
+				text-align: left;
+				margin-bottom: 10px;
+			}
+			.btn-custom {
+				margin-top: 30px;
+				width: 100%;
+				max-width: 160px;
+			}
+		}
+	}
+}

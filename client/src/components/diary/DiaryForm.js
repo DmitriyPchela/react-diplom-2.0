@@ -35,7 +35,7 @@ const DiaryForm = props => {
 
 	useEffect(() => {
 		if (LC.get('profile') != null) {
-			setData({...data, userID: LC.get('profile').login});
+			setData({...data, userID: LC.get('profile').token});
 		}
 	}, []);
 

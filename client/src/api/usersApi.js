@@ -8,6 +8,14 @@ export const usersApi = {
 		})
 	},
 
+	listLogged: ({ token }) => {
+		return request({
+			url: "/users/logged",
+			method: 'POST',
+			data: { token }
+		})
+	},
+
 	delete: (id) => {
 		return request({
 			url: "/users/" + id,

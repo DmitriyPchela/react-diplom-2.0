@@ -11,7 +11,20 @@ router
 		try {
 			const result = await User.find();
 
-			// !!!  USE ONLY THIS SCHEMA FOR RESPONSE -> { status: 'success' or 'error', data: [] or {} or string } !!!
+			res.json({
+				status: 'success',
+				data: result,
+			});
+		} catch (error) {
+			next(error);
+		}
+	})
+
+	.post("/users/logged", accessMiddleware, async (req, res, next) => {
+		try {
+			const { token } = req.body;
+			const result = await User.findOne({token: token});
+
 			res.json({
 				status: 'success',
 				data: result,
@@ -25,11 +38,10 @@ router
 	// this method overwrites existing data in our database
 	.put("/users/:id", accessMiddleware, async (req, res, next) => {
 		try {
-			const { date, time, pressureUp, pressureDown, pulse, healthy, comment } = req.body;
-			const { id } = req.params;
-			if (!id) { throw new WrongParametersError() }
+			let { name, surname, login, email, phone, password, passwordNew, token } = req.body;
 
-			const result = await User.findOneAndUpdate(id, { date, time, pressureUp, pressureDown, pulse, healthy, comment });
+			passwordNew ? password = passwordNew : null;
+			const result = await User.findOneAndUpdate({ token: token }, { name, surname, login, email, phone, password });
 
 			res.json({
 				status: 'success',

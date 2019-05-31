@@ -122,17 +122,31 @@ input, textarea {
 	border: 1px solid #dde4ea;
 	outline: none;
 	resize: none;
-	cursor: pointer;
 	&::placeholder {
 		font-style: italic;
 	}
 }
 
+.section-title {
+	text-align: center;
+	margin-bottom: 30px;
+	@include text($black, 48px, 700);
+}
+
 .alert {
 	width: 100%;
 	max-width: 350px;
-	margin: 0 auto 20px auto;
-	@include text($black, 16px);
+	margin: 0 auto 30px auto;
+	padding: 15px;
+	p {
+		text-align: center;
+		margin-bottom: 0;
+		@include text($black, 16px);
+		a {
+			text-decoration: underline;
+			color: $blue;
+		}
+	}
 }
 
 .form-container {

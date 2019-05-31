@@ -17,11 +17,11 @@ export const authApi = {
 		})
 	},
 
-	isAuthorized: ({ login, token }) => {
+	isAuthorized: ({ token }) => {
 		return request({
 			url: '/auth/isAuthorized',
 			method: 'POST',
-			data: { login, token }
+			data: { token }
 		})
 	},
 };

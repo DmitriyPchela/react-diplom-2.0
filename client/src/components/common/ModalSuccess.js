@@ -1,15 +1,16 @@
-import React from 'react';
-import {Link} from "react-router-dom";
-import LC from "local-storage";
+import React, { useState } from 'react';
 
 
 const ModalSuccess = ({title, desc, success}) => {
+	const [isSuccess, setSuccess] = useState(success);
+
 	const modalClose = () => {
 		document.getElementById('modal-success').classList.remove('show');
+		setSuccess(false);
 	};
 	
 	return (
-		<div className={success ? 'modal-container show' : 'modal-container'} id="modal-success">
+		<div className={isSuccess ? 'modal-container show' : 'modal-container'} id="modal-success">
 			<div className="modal-box">
 				<div className="modal-header justify-content-center">
 					<h5 className="modal-title">{title}</h5>

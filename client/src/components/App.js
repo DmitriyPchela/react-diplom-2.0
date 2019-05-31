@@ -15,22 +15,21 @@ import Footer from "./common/Footer";
 import RegisterPage from "./register/RegisterPage";
 import Login from "./login/LoginPage";
 import Account from "./account/AccountPage";
+import Edit from "./edit/EditPage";
+
 
 const App = props => {
 	useEffect(() => {
 		(async function () {
 			if (LC.get('profile') !== null) {
-				let login = LC.get('profile').login;
 				let token = LC.get('profile').token;
 
 				const res = await authApi.isAuthorized({
-					login: login,
 					token: token
 				});
 
 				if (res.data.status === 'success') {
 					props.setUserProfile({
-						login: res.data.data.profile.login,
 						token: res.data.data.profile.token,
 						isAuthorized: res.data.data.isAuthorized
 					});
@@ -52,6 +51,7 @@ const App = props => {
 				<Route path="/registration" component={RegisterPage}/>
 				<Route path="/login" component={Login}/>
 				<Route path="/account" component={Account}/>
+				<Route path="/edit" component={Edit}/>
 			</Switch>
 			<Footer/>
 		</>

@@ -18,13 +18,13 @@ const AccountPage = props => {
 
     const getCurrentUser = (users) => {
         users.map(item => {
-            return item.login === LC.get('profile').login && setUser(item);
+            return item.token === LC.get('profile').token && setUser(item);
         });
     };
 
     const getUserHealth = (data) => {
         setHealthData(data.filter(item => {
-           return item.userID === LC.get('profile').login && item;
+           return item.userID === LC.get('profile').token && item;
         }));
     };
 

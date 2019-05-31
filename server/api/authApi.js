@@ -37,10 +37,10 @@ router
     })
 
     .post('/auth/isAuthorized', async (req, res) => {
-        const { token, login } = req.body;
+        const { token } = req.body;
 
         const profile = await User.findOne({
-            login,
+            token,
         });
 
         if (profile) {

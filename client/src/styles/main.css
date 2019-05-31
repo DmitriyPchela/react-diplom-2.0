@@ -5,6 +5,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic,cyrillic-ext,latin-ext");
 :root {
   --blue: #007bff;
@@ -9806,20 +9807,37 @@ input, textarea {
   border: 1px solid #dde4ea;
   outline: none;
   resize: none;
-  cursor: pointer;
 }
 input::placeholder, textarea::placeholder {
   font-style: italic;
 }
 
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .alert {
   width: 100%;
   max-width: 350px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 30px auto;
+  padding: 15px;
+}
+.alert p {
+  text-align: center;
+  margin-bottom: 0;
   color: #404040;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+}
+.alert p a {
+  text-decoration: underline;
+  color: #18a3eb;
 }
 
 .form-container .form-group {
@@ -9942,6 +9960,10 @@ header .nav-header-box .login-box .phone-box a img {
   padding: 160px 0 140px;
   background-color: #f0f4f8;
 }
+.section-header .container {
+  position: relative;
+  z-index: 1;
+}
 .section-header img {
   position: absolute;
   top: 0;
@@ -9950,6 +9972,7 @@ header .nav-header-box .login-box .phone-box a img {
   bottom: auto;
   width: auto;
   height: 410px;
+  z-index: 0;
 }
 .section-header .title {
   color: #404040;
@@ -10707,6 +10730,35 @@ footer .footer-links ul li a {
 }
 #diaryPage .section-services .form-container .form-group .btn-custom {
   max-width: 200px;
+}
+
+#edit-page .section-edit-info {
+  padding: 30px 0 60px 0;
+}
+#edit-page .section-edit-info .link-back a {
+  text-decoration: underline;
+  color: #18a3eb;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+#edit-page .section-edit-info .link-back a i {
+  margin-right: 10px;
+}
+#edit-page .section-edit-info .form-container .col-6:first-child .form-group {
+  margin: 0 auto 10px 0;
+}
+#edit-page .section-edit-info .form-container .col-6:last-child .form-group {
+  margin: 0 0 10px auto;
+}
+#edit-page .section-edit-info .form-container .form-group {
+  text-align: left;
+  margin-bottom: 10px;
+}
+#edit-page .section-edit-info .form-container .btn-custom {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 160px;
 }
 
 /*# sourceMappingURL=main.css.map */
