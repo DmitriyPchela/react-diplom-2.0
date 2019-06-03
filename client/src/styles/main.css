@@ -9753,6 +9753,11 @@ img {
   width: 100%;
   max-width: 200px;
 }
+.modal-container .modal-box .modal-footer .btn-custom.ok {
+  background: transparent;
+  color: #18a3eb;
+  border: 1px solid #18a3eb;
+}
 
 .btn-custom {
   color: #ffffff;
@@ -10762,6 +10767,63 @@ footer .footer-links ul li a {
 }
 #edit-page .section-health-table {
   padding-bottom: 80px;
+}
+#edit-page .section-health-table .table p {
+  text-align: center;
+  margin-bottom: 0;
+  color: #404040;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.4;
+  font-style: italic;
+}
+#edit-page .section-health-table .table p a {
+  color: #18a3eb;
+  text-decoration: underline;
+}
+#edit-page .section-health-table .table thead {
+  background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
+}
+#edit-page .section-health-table .table thead tr th {
+  vertical-align: middle;
+  text-align: center;
+  color: #ffffff;
+}
+#edit-page .section-health-table .table tbody tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+#edit-page .section-health-table .table tbody tr td .form-group {
+  margin-bottom: 0;
+}
+#edit-page .section-health-table .table tbody tr td .form-group .select-wrapper {
+  position: relative;
+}
+#edit-page .section-health-table .table tbody tr td .form-group .select-wrapper:before {
+  transform: translateY(-50%);
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #404040;
+  position: absolute;
+  top: 50%;
+  left: auto;
+  right: 10px;
+  bottom: auto;
+}
+#edit-page .section-health-table .table tbody tr td .form-group .select-wrapper select {
+  -webkit-appearance: none;
+  padding: 7px 25px 7px 15px;
+}
+#edit-page .section-health-table .table tbody tr td .btn-delete {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: #18a3eb;
+  font-size: 20px;
 }
 #edit-page .section-health-table .btn-row {
   padding-top: 15px;

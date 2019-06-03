@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import LC from "local-storage";
-import {healthStatusApi} from "../../../api";
+import { healthStatusApi } from "../../../api";
 import InputText from "../../common/formComponents/InputText";
 import InputSelect from "../../common/formComponents/InputSelect";
+import { Link } from "react-router-dom";
+import { ask, ModalSubmit } from "../../common/ModalSubmit";
 
-const initialData = {
-	date: '',
-	time: new Date().toLocaleTimeString().replace("/.*({2}:{2}).*/", "$1"),
-	pressureUp: '',
-	pressureDown: '',
-	pulse: '',
-	healthy: 'default'
-};
+
+// const initialData = {
+// 	date: '',
+// 	time: new Date().toLocaleTimeString().replace("/.*({2}:{2}).*/", "$1"),
+// 	pressureUp: '',
+// 	pressureDown: '',
+// 	pulse: '',
+// 	healthy: 'default'
+// };
 
 const healthyOptions = [
 	"Задовільне",
@@ -23,40 +26,82 @@ const healthyOptions = [
 ];
 
 const EditTable = () => {
-	const [healthData, setHealthData] = useState(initialData);
-	const [newHealthData, setNewHealthData] = useState([]);
+	const [data, setData] = useState({ healthData: [], newHealthData: [] });
+	const [success, setSuccess] = useState(false);
+
 	
 	useEffect(() => {
 		if (LC.get('profile') != null) {
 			const userId = LC.get('profile').login;
 			
 			healthStatusApi.listUser({login: userId}).then(res => {
-				setHealthData(res.data.data);
-				// setNewHealthData(res.data.data);
+				setData(prev => ({
+					...prev,
+					healthData: res.data.data,
+					newHealthData: res.data.data
+				}));
 			});
 		}
 		
 	}, []);
-	
-	const handleChange = (e) => {
+
+	const handleChange = (key) => (e) => {
 		const { name, value } = e.target;
-		newHealthData.map((item, index) => {
-			console.log(item);
-			console.log(index);
-			// setNewHealthData({})
-		})
-		
+		data.newHealthData[key][name] = value;
+
+		setData(prev => ({
+			...prev,
+			newHealthData: [...data.newHealthData]
+		}));
 	};
-	
-	// console.log(healthData);
-	console.log(newHealthData);
-	
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		healthStatusApi.update(data.newHealthData._id, data.newHealthData).then(res => {
+			if (res.data.status === 'success') {
+				setSuccess(true);
+			}
+		});
+	};
+
+	const handleDelete = (item) => {
+		ask({
+			callback: (answer) => {
+				if (answer) {
+					console.log(item);
+					setData(prev => ({
+						...prev,
+						healthData: [...data.healthData.filter(el => el === item)]
+					}));
+					// healthStatusApi.delete(item._id).then(res => {
+					// 	if (res.data.status === 'success') {
+					//
+					// 	}
+					// });
+				}
+			}
+		})
+	};
+
+	console.log(data.healthData);
+
 	return (
 		<section className="section-health-table">
 			<div className="container">
+				{
+					success ? (
+						<div className="alert alert-success alert-dismissible fade show" role="alert">
+							<p>Ваші дані збережено! <br/> Перейти до <Link to="/account">особистого кабінету</Link></p>
+							<button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => setSuccess(false)}>
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					) : ''
+				}
 				<h2 className="section-title">Дані здоров'я</h2>
-				<form className="form-container">
-					<table className="table table-bordered table-hover ">
+				<form className="form-container" onSubmit={handleSubmit}>
+					<table className="table table-bordered">
 						<thead>
 						<tr>
 							<th scope="col" rowSpan="2">Дата</th>
@@ -64,6 +109,7 @@ const EditTable = () => {
 							<th scope="col" colSpan="2">Тиск</th>
 							<th scope="col" rowSpan="2">Пульс</th>
 							<th scope="col" rowSpan="2">Самопочуття</th>
+							<th scope="col" rowSpan="2">Видалити</th>
 						</tr>
 						<tr>
 							<th>Верхнє</th>
@@ -72,7 +118,7 @@ const EditTable = () => {
 						</thead>
 						<tbody>
 						{
-							healthData.length > 0 && healthData.map(item => {
+							data.healthData.length > 0 && data.healthData.map((item, index) => {
 								return <tr key={item._id}>
 									<td>
 										<InputText
@@ -80,7 +126,7 @@ const EditTable = () => {
 											name="date"
 											label="Дата"
 											value={item.date}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -89,7 +135,7 @@ const EditTable = () => {
 											name="time"
 											label="Время"
 											value={item.time}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -99,7 +145,7 @@ const EditTable = () => {
 											label="Верхній тиск"
 											value={item.pressureUp}
 											minVal={50}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -109,7 +155,7 @@ const EditTable = () => {
 											label="Нижній тиск"
 											value={item.pressureDown}
 											minVal={50}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -119,7 +165,7 @@ const EditTable = () => {
 											label="Пульс"
 											value={item.pulse}
 											minVal={0}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -128,8 +174,13 @@ const EditTable = () => {
 											label="Самопочуття"
 											value={item.healthy}
 											options={healthyOptions}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
+									</td>
+									<td>
+										<button type="button" className="btn-delete" onClick={() => handleDelete(item)}>
+											<i className="fas fa-trash-alt"/>
+										</button>
 									</td>
 								</tr>
 							})
@@ -141,6 +192,7 @@ const EditTable = () => {
 					</div>
 				</form>
 			</div>
+			<ModalSubmit/>
 		</section>
 	);
 };

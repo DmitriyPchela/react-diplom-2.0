@@ -19,7 +19,7 @@ export const healthStatusApi = {
     delete: (id) => {
         return request({
             url: "/health_status/" + id,
-            method: 'POST',
+            method: 'DELETE',
         })
     },
 

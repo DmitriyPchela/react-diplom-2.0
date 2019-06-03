@@ -76,6 +76,11 @@ img {
 			.btn-custom {
 				width: 100%;
 				max-width: 200px;
+				&.ok {
+					background: transparent;
+					color: $blue;
+					border: 1px solid $blue;
+				}
 			}
 		}
 	}
