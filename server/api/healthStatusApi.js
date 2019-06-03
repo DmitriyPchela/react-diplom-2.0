@@ -40,14 +40,12 @@ router
     // this method overwrites existing data in our database
     .put("/health_status/:id", accessMiddleware, async (req, res, next) => {
         try {
-    
-            await req.body.map(item => {
-                // const { _id, date, time, pressureUp, pressureDown, pulse, healthy } = item;
-                console.log(item);
-                HealthStatus.findOneAndUpdate({_id: _id}, item);
+            req.body.map(async item => {
+                const { date, time, pressureUp, pressureDown, pulse, healthy } = item;
+                await HealthStatus.findOneAndUpdate({_id: item._id}, { date, time, pressureUp, pressureDown, pulse, healthy });
             });
-    
-            await res.json({
+
+            res.json({
                 status: 'success',
             });
         } catch (error) {
@@ -60,11 +58,12 @@ router
     .delete("/health_status/:id", accessMiddleware, async (req, res, next) => {
         try {
             const { id } = req.params;
-            if (!id || isNaN(id)) { throw WrongParametersError }
 
             await HealthStatus.findOneAndDelete(id);
 
-            res.json({ status: 'success' });
+            res.json({
+                status: 'success'
+            });
         } catch (error) {
             next(error);
         }

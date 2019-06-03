@@ -34,31 +34,18 @@ img {
 }
 
 .modal-container {
+	display: none;
 	background-color: rgba(0,0,0,0.5);
 	z-index: 1050;
-	opacity: 0;
-	visibility: hidden;
-	@include flex(column, center, center);
 	@include pos(0, 0, 0, 0, fixed);
-	transition: all 0.5s ease-out 0.4s;
 	&.show {
-		opacity: 1;
-		visibility: visible;
-		transition-delay: 0s;
-		.modal-box {
-			opacity: 1;
-			transform: translateY(0);
-			transition-delay: 0.4s;
-		}
+		@include flex(column, center, center);
 	}
 	.modal-box {
 		background-color: $white;
 		width: 100%;
 		max-width: 500px;
 		margin: 0 auto;
-		transform: translateY(-60px);
-		opacity: 0;
-		transition: all 0.6s ease-out 0s;
 		.modal-header {
 			text-align: center;
 			.modal-title {
@@ -75,7 +62,16 @@ img {
 			@include flex(row, center, center);
 			.btn-custom {
 				width: 100%;
-				max-width: 200px;
+				max-width: 150px;
+				margin-right: 30px;
+				&:last-child {
+					margin-right: 0;
+				}
+				&.ok {
+					background: transparent;
+					color: $blue;
+					border: 1px solid $blue;
+				}
 			}
 		}
 	}

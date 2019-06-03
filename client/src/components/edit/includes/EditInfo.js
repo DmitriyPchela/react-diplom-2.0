@@ -4,8 +4,9 @@ import InputText from "../../common/formComponents/InputText";
 import { usersApi } from "../../../api";
 import InputMask from "react-input-mask";
 import LC from "local-storage";
+import AlertSuccess from "../../common/AlertSuccess";
 
-const userData = {
+const initialState = {
 	name: '',
 	surname: '',
 	login: '',
@@ -16,7 +17,7 @@ const userData = {
 };
 
 const EditInfo = () => {
-	const [data, setData] = useState({user: userData, newUser: userData});
+	const [data, setData] = useState({user: initialState, newUser: initialState});
 	const [errors, setErrors] = useState({});
 	const [success, setSuccess] = useState(false);
 
@@ -72,14 +73,7 @@ const EditInfo = () => {
 		<section className="section-edit-info">
 			<div className="container">
 				{
-					success ? (
-						<div className="alert alert-success alert-dismissible fade show" role="alert">
-							<p>Ваші дані збережено! <br/> Перейти до <Link to="/account">особистого кабінету</Link></p>
-							<button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => setSuccess(false)}>
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-					) : ''
+					success && <AlertSuccess message="Дані збережно!"/>
 				}
 				<div className="link-back">
 					<Link to="/account">

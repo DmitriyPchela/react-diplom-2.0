@@ -13,8 +13,9 @@ const HealthStatus = new Schema(
 		healthy: String,
 		comment: String,
 		userID: String
-	},
-	{timestamps: true}
+	}, {
+		timestamps: true
+	}
 );
 
 // export the new Schema so we could modify it using Node.js

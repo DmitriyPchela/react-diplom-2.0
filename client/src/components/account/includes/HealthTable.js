@@ -1,8 +1,31 @@
-import React  from 'react';
+import React, { useState, useEffect }  from 'react';
 import {Link} from "react-router-dom";
+import LC from "local-storage";
+import {healthStatusApi} from "../../../api";
 
 
-const HealthTable = ({loading, healthData}) => {
+const HealthTable = props => {
+	const [healthData, setHealthData] = useState({});
+	const [loading, setLoading] = useState(true);
+	
+	const getUserHealth = (data) => {
+		setHealthData(data.filter(item => {
+			return item.userID === LC.get('profile').login && item;
+		}));
+	};
+	
+	const apiHealthSuccess = (data) => {
+		getUserHealth(data);
+		setLoading(false);
+	};
+	
+	useEffect( () => {
+		(async function () {
+			const apiHealthCall = await healthStatusApi.list();
+			apiHealthCall.statusText === 'OK' ? apiHealthSuccess(apiHealthCall.data.data) : alert(apiHealthCall.statusText);
+		})();
+	}, []);
+	
 	return (
 		<section className="section-health-status">
 			<div className="container">

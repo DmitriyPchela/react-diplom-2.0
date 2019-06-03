@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 import LC from "local-storage";
-import {authApi} from "../../../api";
+import {authApi, usersApi} from "../../../api";
 import {connect} from "react-redux";
 import {deleteUserProfile} from "../../../store/actions";
 
-const Info = ({user, loading, ...props}) => {
-
+const Info = props => {
+	const [user, setUser] = useState({});
+	const [loading, setLoading] = useState(true);
+	
+	const getCurrentUser = (users) => {
+		users.map(item => {
+			return item.token === LC.get('profile').token && setUser(item);
+		});
+	};
+	
+	const apiCallSuccess = (user) => {
+		getCurrentUser(user);
+		setLoading(false);
+	};
+	
+	useEffect( () => {
+		(async function () {
+			const apiCall = await usersApi.list();
+			apiCall.statusText === 'OK' ? apiCallSuccess(apiCall.data.data) : alert(apiCall.statusText);
+		})();
+	}, []);
+	
 	const logout = () => {
 		let token = LC.get('profile').token;
-		authApi.logout({ token: token }).then(res => {
+		authApi.logout({ token: token }).then(() => {
 			props.deleteUserProfile();
 			window.location.reload();
 		});
