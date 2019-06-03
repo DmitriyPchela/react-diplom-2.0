@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import LC from "local-storage";
-import {healthStatusApi} from "../../../api";
+import {healthStatusApi, usersApi} from "../../../api";
 import InputText from "../../common/formComponents/InputText";
 import InputSelect from "../../common/formComponents/InputSelect";
 
 const initialData = {
 	date: '',
 	time: new Date().toLocaleTimeString().replace("/.*({2}:{2}).*/", "$1"),
-	pressureUp: '',
-	pressureDown: '',
-	pulse: '',
+	pressureUp: 0,
+	pressureDown:  0,
+	pulse:  0,
 	healthy: 'default'
 };
 
@@ -24,7 +24,8 @@ const healthyOptions = [
 
 const EditTable = () => {
 	const [healthData, setHealthData] = useState(initialData);
-	const [newHealthData, setNewHealthData] = useState([]);
+	const [newHealthData, setNewHealthData] = useState(initialData);
+	const [success, setSuccess] = useState(false);
 	
 	useEffect(() => {
 		if (LC.get('profile') != null) {
@@ -32,30 +33,48 @@ const EditTable = () => {
 			
 			healthStatusApi.listUser({login: userId}).then(res => {
 				setHealthData(res.data.data);
-				// setNewHealthData(res.data.data);
+				setNewHealthData(res.data.data);
 			});
 		}
 		
 	}, []);
 	
-	const handleChange = (e) => {
+	const handleChange = (key) => (e) => {
 		const { name, value } = e.target;
-		newHealthData.map((item, index) => {
-			console.log(item);
-			console.log(index);
-			// setNewHealthData({})
-		})
-		
+		newHealthData[key][name] = value;
+		setNewHealthData([...newHealthData]);
 	};
 	
-	// console.log(healthData);
-	console.log(newHealthData);
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// const errors = validate(data.newUser);
+		// setErrors(errors);
+		// if (Object.keys(errors).length === 0) {
+		//
+		// }
+		let changed = false;
+		if (JSON.stringify(newHealthData) !== JSON.stringify(healthData)) {
+			changed = true
+		}
+		console.log(JSON.stringify(newHealthData));
+		console.log(JSON.stringify(healthData));
+		
+		
+		changed && healthStatusApi.update(newHealthData._id, newHealthData).then((res) => {
+			if (res.data.status === 'success') {
+				console.log(res);
+				// setSuccess(true);
+			}
+		});
+	};
+	
+	// console.log(newHealthData);
 	
 	return (
 		<section className="section-health-table">
 			<div className="container">
 				<h2 className="section-title">Дані здоров'я</h2>
-				<form className="form-container">
+				<form className="form-container" onSubmit={handleSubmit}>
 					<table className="table table-bordered table-hover ">
 						<thead>
 						<tr>
@@ -72,7 +91,7 @@ const EditTable = () => {
 						</thead>
 						<tbody>
 						{
-							healthData.length > 0 && healthData.map(item => {
+							healthData.length > 0 && healthData.map((item, index) => {
 								return <tr key={item._id}>
 									<td>
 										<InputText
@@ -80,7 +99,7 @@ const EditTable = () => {
 											name="date"
 											label="Дата"
 											value={item.date}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -89,7 +108,7 @@ const EditTable = () => {
 											name="time"
 											label="Время"
 											value={item.time}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -99,7 +118,7 @@ const EditTable = () => {
 											label="Верхній тиск"
 											value={item.pressureUp}
 											minVal={50}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -109,7 +128,7 @@ const EditTable = () => {
 											label="Нижній тиск"
 											value={item.pressureDown}
 											minVal={50}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -119,7 +138,7 @@ const EditTable = () => {
 											label="Пульс"
 											value={item.pulse}
 											minVal={0}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 									<td>
@@ -128,7 +147,7 @@ const EditTable = () => {
 											label="Самопочуття"
 											value={item.healthy}
 											options={healthyOptions}
-											onChange={handleChange}
+											onChange={handleChange(index)}
 										/>
 									</td>
 								</tr>
