@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import LC from "local-storage";
+
 
 import HeaderPage from "../common/HeaderPage";
 import DiaryForm from "./DiaryForm";
@@ -25,15 +27,16 @@ const DiaryPage = () => {
 							</p>
 						</div>
 					</div>
-					<div className="btn-box">
-						<Link to="/news" className="btn-custom">Детальніше</Link>
-					</div>
 				</div>
 			</section>
 			<section className="section-services">
 				<div className="container">
 					<h2 className="sub-title">Щоденник контролю</h2>
-					<DiaryForm/>
+					{
+						LC.get('profile') != null ?
+							<DiaryForm/>
+							: <p className="info">Для заповнення щоденнику контролю, необхідно <Link to="/registration"> зареєструватися</Link> та увійти до <Link to="/account"> особистого кабінету!</Link></p>
+					}
 				</div>
 			</section>
 		</main>

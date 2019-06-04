@@ -5,7 +5,7 @@ import { healthStatusApi } from '../../api';
 import InputText from "../common/formComponents/InputText";
 import InputSelect from "../common/formComponents/InputSelect";
 import InputArea from "../common/formComponents/InputArea";
-import ModalSuccess from "../common/ModalSuccess";
+import { show, ModalSuccess } from "../common/ModalSuccess";
 
 const healthyOptions = [
 	"Задовільне",
@@ -30,7 +30,6 @@ const initialData = {
 const DiaryForm = props => {
 	const [data, setData] = useState(initialData);
 	const [errors, setErrors] = useState({});
-	const [success, setSuccess] = useState(false);
 
 	useEffect(() => {
 		if (LC.get('profile') != null) {
@@ -63,13 +62,17 @@ const DiaryForm = props => {
 		if (Object.keys(errors).length === 0) {
 			healthStatusApi.create(data).then(res => {
 				if (res.data.status === 'success') {
-					setSuccess(true);
-					return setData(initialData);
+					console.log(123);
+					show({
+						title: 'Дані збережено!',
+						desc: 'Можете переглянути їх в особистому кабінеті.'
+					});
+					setData(initialData);
 				}
 			});
 		}
 	};
-
+	
 	return (
 		<form className="form-container row" onSubmit={handleSubmit}>
 			<InputText
@@ -140,13 +143,7 @@ const DiaryForm = props => {
 			<div className="form-group col-12 d-flex justify-content-center">
 				<button type="submit" className="btn-custom">Зберегти дані</button>
 			</div>
-			{
-				success && <ModalSuccess
-					title={'Ваші дані збережно!'}
-					desc={`Їх можно переглянути у особистому кабінеті!`}
-					success={success ?  success : !success}
-				/>
-			}
+			<ModalSuccess/>
 		</form>
 	);
 };

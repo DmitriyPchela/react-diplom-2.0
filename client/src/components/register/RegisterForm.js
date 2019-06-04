@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputText from "../common/formComponents/InputText";
 import InputMask from "react-input-mask";
 import {usersApi} from "../../api";
-import ModalSuccess from "../common/ModalSuccess";
+import { show, ModalSuccess } from "../common/ModalSuccess";
 
 const userData = {
 	name: '',
@@ -41,7 +41,10 @@ const RegisterForm = props => {
 		if (Object.keys(errors).length === 0) {
 			usersApi.create(user).then((res) => {
 				if (res.data.status === 'success') {
-					setSuccess(true);
+					show({
+						title: 'Реєстрація пройшла успішно!',
+						desc: 'Можете перейти до авторизації'
+					});
 					return setUser(userData);
 				}
 			});
@@ -107,11 +110,7 @@ const RegisterForm = props => {
 			<div className="form-group">
 				<button className="btn-custom">Зареєструватися</button>
 			</div>
-			<ModalSuccess
-				title={'Вітаємо з реєстрацією'}
-				desc={`Для того щоб авторизуватись, перейдіть до сторінки логіну!`}
-				success={success}
-			/>
+			<ModalSuccess/>
 		</form>
 	);
 };

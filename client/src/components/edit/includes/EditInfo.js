@@ -4,7 +4,8 @@ import InputText from "../../common/formComponents/InputText";
 import { usersApi } from "../../../api";
 import InputMask from "react-input-mask";
 import LC from "local-storage";
-import AlertSuccess from "../../common/AlertSuccess";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = {
 	name: '',
@@ -19,7 +20,6 @@ const initialState = {
 const EditInfo = () => {
 	const [data, setData] = useState({user: initialState, newUser: initialState});
 	const [errors, setErrors] = useState({});
-	const [success, setSuccess] = useState(false);
 
 	useEffect(() => {
 		if (LC.get('profile') != null) {
@@ -35,7 +35,6 @@ const EditInfo = () => {
 	const validate = (data) => {
 		const errors = {};
 		if (!data.login) errors.login = "Поле логін обов'язкове";
-		if (!data.password || data.password.length < 6) errors.password = "Поле пароль обов'язкове";
 		if (!data.email) errors.email = "Поле email обов'язкове";
 		if (!data.phone) errors.phone = "Поле телефон обов'язкове";
 
@@ -63,7 +62,14 @@ const EditInfo = () => {
 
 			changed && usersApi.update(data._id, data.newUser).then((res) => {
 				if (res.data.status === 'success') {
-					setSuccess(true);
+					toast.success('✓ Дані відновлено!', {
+						position: "top-right",
+						autoClose: 2000,
+						hideProgressBar: true,
+						closeOnClick: true,
+						pauseOnHover: false,
+						draggable: true
+					});
 				}
 			});
 		}
@@ -72,9 +78,7 @@ const EditInfo = () => {
 	return (
 		<section className="section-edit-info">
 			<div className="container">
-				{
-					success && <AlertSuccess message="Дані збережно!"/>
-				}
+				<ToastContainer/>
 				<div className="link-back">
 					<Link to="/account">
 						<i className="fas fa-arrow-left"/>
@@ -135,18 +139,10 @@ const EditInfo = () => {
 							</div>
 							<InputText
 								type="password"
-								name="password"
-								label="Дійсний пароль"
-								value={data.newUser.password}
-								error={errors.password}
-								onChange={handleChange}
-							/>
-							<InputText
-								type="password"
 								name="passwordNew"
 								label="Новий пароль"
-								error={errors.passwordNew}
 								onChange={handleChange}
+								minVal={6}
 								small="Мінімальний розмір паролю: 6 символів"
 							/>
 						</div>

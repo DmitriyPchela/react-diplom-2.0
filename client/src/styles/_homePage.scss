@@ -5,21 +5,34 @@
 			height: 100%;
 		}
 		.swiper-pagination {
-			@include pos(50%, unset, unset, 0, absolute);
-			transform: translateY(-50%);
-			width: 120px;
-			span {
-				@include text(#aaaaaa, 16px, 600);
-				display: block;
-				width: 100%;
-				text-align: right;
-				margin-bottom: 15px;
-				border-radius: 0;
-				border-bottom: 2px solid transparent;
-				background: transparent;
+			width: 100%;
+			max-width: 1140px;
+			margin: 0 auto;
+			padding: 0 75px;
+			@include flex(row, flex-start, center);
+			@include pos(auto, 0, 40px, 0);
+			.swiper-pagination-bullet {
+				position: relative;
+				background: $white;
+				border: 1px solid $blue;
+				width: 20px;
+				height: 20px;
+				margin: 0 30px 0 0;
 				opacity: 1;
 				&:last-child {
 					margin-bottom: 0;
+					margin-right: 0;
+				}
+				&-active {
+					&:before {
+						content: '';
+						@include pos(50%, auto, auto, 50%);
+						transform: translate(-50%, -50%);
+						width: 10px;
+						height: 10px;
+						background-color: $blue;
+						border-radius: 50%;
+					}
 				}
 			}
 		}

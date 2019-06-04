@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Header from "./sections/Header";
-import Appointment from "./sections/Appointment";
-import News from './sections/News';
+import Header from "./includes/Header";
+import Appointment from "./includes/Appointment";
+import News from './includes/News';
 
 const appointmentData = {
 	name: '',

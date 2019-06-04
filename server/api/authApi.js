@@ -64,7 +64,7 @@ router
         } else {
             res.json({
                 status: 'error',
-                message: 'User not found'
+                message: 'Користувач не знайдений!'
             })
         }
     })

@@ -7,6 +7,7 @@ import { healthStatusApi } from "../../../api";
 import InputText from "../../common/formComponents/InputText";
 import InputSelect from "../../common/formComponents/InputSelect";
 import { ask, ModalAsk } from "../../common/ModalAsk";
+import {Link} from "react-router-dom";
 
 const initialData = {
 	date: '',
@@ -59,7 +60,7 @@ const EditTable = () => {
 
 		healthStatusApi.update(data.newHealthData._id, data.newHealthData).then(res => {
 			if (res.data.status === 'success') {
-				toast.success('Дані збережено!', {
+				toast.success('✓ Дані відновлено!', {
 					position: "top-right",
 					autoClose: 2000,
 					hideProgressBar: true,
@@ -95,17 +96,7 @@ const EditTable = () => {
 	return (
 		<section className="section-health-table">
 			<div className="container">
-				<ToastContainer
-					position="top-right"
-					autoClose={2000}
-					hideProgressBar
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					pauseOnVisibilityChange={false}
-					draggable
-					pauseOnHover={false}
-				/>
+				<ToastContainer/>
 				<h2 className="section-title">Дані здоров'я</h2>
 				<form className="form-container" onSubmit={handleSubmit}>
 					<table className="table table-bordered">
@@ -125,7 +116,7 @@ const EditTable = () => {
 						</thead>
 						<tbody>
 						{
-							data.healthData.length > 0 && data.healthData.map((item, index) => {
+							data.healthData.length > 0 ? data.healthData.map((item, index) => {
 								return <tr key={item._id}>
 									<td>
 										<InputText
@@ -191,12 +182,20 @@ const EditTable = () => {
 									</td>
 								</tr>
 							})
+								: <tr>
+									<td colSpan="7">
+										<p>Данні про стан здоров'я відсутні. Перейдіть до <Link to="/services">"Вашого щоденнику"</Link> та заповніть дані!</p>
+									</td>
+								</tr>
 						}
 						</tbody>
 					</table>
-					<div className="btn-row">
-						<button type="submit" className="btn-custom">Зберегти</button>
-					</div>
+					{
+						data.healthData.length > 0 &&
+						<div className="btn-row">
+							<button type="submit" className="btn-custom">Зберегти</button>
+						</div>
+					}
 				</form>
 			</div>
 			<ModalAsk/>

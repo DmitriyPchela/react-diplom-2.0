@@ -1,19 +1,23 @@
 import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
 import "swiper/dist/css/swiper.min.css";
-import Swiper from "swiper/dist/js/swiper.esm.bundle";
+import Swiper from "swiper";
+
 
 const Header = () => {
-	useEffect(() => {
+	const slideInit = () => {
 		new Swiper('.swiper-container', {
 			direction: 'horizontal',
 			loop: true,
 			pagination: {
 				el: '.swiper-pagination',
 				clickable: true,
-				renderBullet: (index, className) => `<span className=${className}>0${index + 1}</span>`,
 			},
-		})
+		});
+	};
+	
+	useEffect(() => {
+		slideInit();
 	}, []);
 	
 	return (
@@ -84,7 +88,7 @@ const Header = () => {
 						</div>
 					</div>
 				</div>
-				<div className="swiper-pagination"></div>
+				<div className="swiper-pagination"/>
 			</div>
 		</section>
 	);

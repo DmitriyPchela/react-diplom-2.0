@@ -67,14 +67,13 @@ const HealthChart = props => {
 	}, [healthData]);
 
 	return (
-		<section className="section-health-chart">
-			<div className="container">
-				<h2 className="section-title">Графік стану здовров'я</h2>
-				{
-					data.labels !== false ? <Line data={data}/> : ''
-				}
-			</div>
-		</section>
+			data.labels !== false &&
+				<section className="section-health-chart">
+					<div className="container">
+						<h2 className="section-title">Графік стану здоров'я</h2>
+						<Line data={data}/>
+					</div>
+				</section>
 	);
 };
 

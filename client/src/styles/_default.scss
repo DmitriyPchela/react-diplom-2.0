@@ -46,16 +46,18 @@ img {
 		width: 100%;
 		max-width: 500px;
 		margin: 0 auto;
+		border-radius: 12px;
 		.modal-header {
 			text-align: center;
 			.modal-title {
-				@include text($black, 24px, 600);
+				@include text($black, 28px, 600, normal);
 			}
 		}
 		.modal-body {
-			a {
-				color: $blue;
-				text-decoration: underline;
+			.modal-text {
+				margin-bottom: 0;
+				text-align: center;
+				@include text($black, 16px);
 			}
 		}
 		.modal-footer {
