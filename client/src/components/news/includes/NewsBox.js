@@ -8,7 +8,7 @@ const NewsBox = () => {
 				<div className="col-12 col-md-6">
 					<div className="news-box">
 						<Link to="/news" className="news-box__image">
-							<img src="images/hero.jpg" alt="News img"/>
+							<img src="/images/hero.jpg" alt="News img"/>
 						</Link>
 						<div className="news-box__header">
 							<h3 className="news-box__header__title">Нові технології в медицині</h3>
@@ -31,7 +31,7 @@ const NewsBox = () => {
 				<div className="col-12 col-md-6">
 					<div className="news-box">
 						<Link to="/news" className="news-box__image">
-							<img src="images/hero.jpg" alt="News img"/>
+							<img src="/images/hero.jpg" alt="News img"/>
 						</Link>
 						<div className="news-box__header">
 							<h3 className="news-box__header__title">Нові технології в медицині</h3>
@@ -54,7 +54,7 @@ const NewsBox = () => {
 				<div className="col-12 col-md-6">
 					<div className="news-box">
 						<Link to="/news" className="news-box__image">
-							<img src="images/hero.jpg" alt="News img"/>
+							<img src="/images/hero.jpg" alt="News img"/>
 						</Link>
 						<div className="news-box__header">
 							<h3 className="news-box__header__title">Нові технології в медицині</h3>
@@ -77,7 +77,7 @@ const NewsBox = () => {
 				<div className="col-12 col-md-6">
 					<div className="news-box">
 						<Link to="/news" className="news-box__image">
-							<img src="images/hero.jpg" alt="News img"/>
+							<img src="/images/hero.jpg" alt="News img"/>
 						</Link>
 						<div className="news-box__header">
 							<h3 className="news-box__header__title">Нові технології в медицині</h3>

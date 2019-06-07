@@ -51,6 +51,16 @@
 	}
 	.section-health-status {
 		padding-bottom: 60px;
+		&.admin-users {
+			.table {
+				margin-bottom: 0;
+				tbody {
+					tr {
+						cursor: pointer;
+					}
+				}
+			}
+		}
 		.section-title {
 			text-align: center;
 			margin-bottom: 30px;

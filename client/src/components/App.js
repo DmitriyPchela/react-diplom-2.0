@@ -16,6 +16,7 @@ import RegisterPage from "./register/RegisterPage";
 import Login from "./login/LoginPage";
 import Account from "./account/AccountPage";
 import Edit from "./edit/EditPage";
+import userHealthInfo from "./user/userHealthPage";
 
 
 const App = props => {
@@ -23,7 +24,6 @@ const App = props => {
 		(async function () {
 			if (LC.get('profile') !== null) {
 				let token = LC.get('profile').token;
-				let login = LC.get('profile').login;
 
 				const res = await authApi.isAuthorized({
 					token: token
@@ -31,9 +31,10 @@ const App = props => {
 
 				if (res.data.status === 'success') {
 					props.setUserProfile({
-						token: res.data.data.profile.token,
 						login: res.data.data.profile.login,
-						isAuthorized: res.data.data.isAuthorized
+						token: res.data.data.profile.token,
+						isAuthorized: res.data.data.isAuthorized,
+						isAdmin: res.data.data.profile.isAdmin
 					});
 				}
 			}
@@ -44,7 +45,7 @@ const App = props => {
 	return (
 		<>
 			<NavHeader isAuthorized={props.isAuth} />
-			<Switch onUpdate={() => window.scrollTo(0, 0)}>
+			<Switch>
 				<Route exact path="/" component={HomePage}/>
 				<Route path="/about" component={AboutPage}/>
 				<Route path="/contacts" component={ContactPage}/>
@@ -54,6 +55,7 @@ const App = props => {
 				<Route path="/login" component={Login}/>
 				<Route path="/account" component={Account}/>
 				<Route path="/edit" component={Edit}/>
+				<Route path="/user/:id" component={userHealthInfo}/>
 			</Switch>
 			<Footer/>
 		</>

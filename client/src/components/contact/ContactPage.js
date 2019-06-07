@@ -14,7 +14,10 @@ const ContactPage = () => {
 	
 	const handleChange = (e) => {
 		const {name, value} = e.target;
-		setData({...data, [name]: value});
+		setData(prev => ({
+			...prev,
+			[name]: value
+		}));
 	};
 	
 	const handleSubmit = (e) => {
@@ -23,7 +26,7 @@ const ContactPage = () => {
 	
 	return (
 		<main id='contactPage'>
-			<HeaderPage bgImage={'https://colorlib.com/preview/theme/medart/images/contact-bg.png'} pageLink={'/contact'} pageName={"Контакти"}/>
+			<HeaderPage bgImage="https://colorlib.com/preview/theme/medart/images/contact-bg.png" pageLink="/contact" pageName="Контакти"/>
 			<section className="section-appointment">
 				<div className="container">
 					<div className="row">
@@ -70,7 +73,7 @@ const ContactPage = () => {
 								<h2 className="appointment-box__title">Допомога</h2>
 								<div className="phone-box">
 									<a href="tel: +38 (068) 483 92 94">
-										<img src="images/emergency-call.png" alt="Call icon"/>
+										<img src={require('../../assets/images/emergency-call.png')} alt="Call icon"/>
 										+38 (068) 483 92 94
 									</a>
 								</div>

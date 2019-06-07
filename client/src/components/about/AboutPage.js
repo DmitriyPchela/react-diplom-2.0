@@ -1,15 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Collapsible from 'react-collapsible';
-
-
 import HeaderPage from "../common/HeaderPage";
 
 
 const AboutPage = () => {
 	return (
 		<main id='aboutPage'>
-			<HeaderPage bgImage={'images/about-bg.png'} pageLink={'/about'} pageName={"Про нас"}/>
+			<HeaderPage bgImage={require('../../assets/images/about-bg.png')} pageLink="/about" pageName="Про нас"/>
 			<section className="section-about">
 				<div className="container">
 					<div className="row">
@@ -26,14 +24,14 @@ const AboutPage = () => {
 						</div>
 						<div className="col-12 col-lg-6 mt-5 mt-lg-0">
 							<div className="image-block">
-								<img src="images/about-img.jpg" alt="About"/>
+								<img src={require('../../assets/images/about-img.jpg')} alt="About"/>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 			<section className="section-faq">
-				<img className='section-bg' src="images/faq-bg.jpg" alt="Section-bg"/>
+				<img className='section-bg' src={require('../../assets/images/faq-bg.jpg')} alt="Section-bg"/>
 				<div className="container">
 					<div className="row">
 						<div className="col-12">
@@ -76,7 +74,7 @@ const AboutPage = () => {
 								<div className="col-12 col-md-6">
 									<div className="professional-box">
 										<h2 className="title">Проффесіоналізм</h2>
-										<img src="images/cardiogram-2.png" alt="Faq"/>
+										<img src={require('../../assets/images/cardiogram-2.png')} alt="Faq"/>
 										<p className="text">
 											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 										</p>
@@ -85,7 +83,7 @@ const AboutPage = () => {
 								<div className="col-12 col-md-6">
 									<div className="quality-box">
 										<h2 className="title">Якість</h2>
-										<img src="images/hospital.png" alt="Faq"/>
+										<img src={require('../../assets/images/hospital.png')} alt="Faq"/>
 										<p className="text">
 											Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 										</p>

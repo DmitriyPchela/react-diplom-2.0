@@ -20,6 +20,25 @@ router
 		}
 	})
 
+	.get("/users/:id", accessMiddleware, async (req, res, next) => {
+		try {
+			const id = req.params.id;
+
+			const result = await User.findOne({
+				where: {
+					_id: id,
+				}
+			});
+
+			res.json({
+				status: 'success',
+				data: result,
+			});
+		} catch (error) {
+			next(error);
+		}
+	})
+
 	.post("/users/logged", accessMiddleware, async (req, res, next) => {
 		try {
 			const { token } = req.body;
@@ -71,11 +90,14 @@ router
 	// this method adds new data in our database
 	.post("/users", accessMiddleware, async (req, res, next) => {
 		try {
+			let isAdmin;
 			let user = new User();
 
-			const { name, surname, login, email, phone, password } = req.body;
+			let { name, surname, login, email, phone, password } = req.body;
 
-			Object.assign(user, { name, surname, login, email, phone, password });
+			login === 'admin' ? isAdmin = true : isAdmin = false;
+
+			Object.assign(user, { name, surname, login, email, phone, password, isAdmin });
 
 			const result = await user.save();
 

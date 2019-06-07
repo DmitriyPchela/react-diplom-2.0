@@ -25,7 +25,7 @@ const Header = () => {
 			<div className="swiper-container">
 				<div className="swiper-wrapper">
 					<div className="swiper-slide">
-						<img src="images/hero.jpg" alt="" className="swiper-slide__bg"/>
+						<img src="/images/hero.jpg" alt="" className="swiper-slide__bg"/>
 						<div className="container h-100">
 							<div className="row h-100">
 								<div className="col-xl-8 col-12">
@@ -46,7 +46,7 @@ const Header = () => {
 						</div>
 					</div>
 					<div className="swiper-slide">
-						<img src="images/hero.jpg" alt="" className="swiper-slide__bg"/>
+						<img src="/images/hero.jpg" alt="" className="swiper-slide__bg"/>
 						<div className="container h-100">
 							<div className="row h-100">
 								<div className="col-xl-8 col-12">
@@ -67,7 +67,7 @@ const Header = () => {
 						</div>
 					</div>
 					<div className="swiper-slide">
-						<img src="images/hero.jpg" alt="" className="swiper-slide__bg"/>
+						<img src="/images/hero.jpg" alt="" className="swiper-slide__bg"/>
 						<div className="container h-100">
 							<div className="row h-100">
 								<div className="col-xl-8 col-12">

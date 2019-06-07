@@ -9958,12 +9958,14 @@ header .nav-header-box .login-box .phone-box a img {
 
 .section-header {
   position: relative;
-  padding: 160px 0 140px;
+  padding: 110px 0;
   background-color: #f0f4f8;
 }
 .section-header .container {
   position: relative;
   z-index: 1;
+  max-width: 600px;
+  margin: 0 auto 0 15%;
 }
 .section-header img {
   position: absolute;
@@ -9972,15 +9974,15 @@ header .nav-header-box .login-box .phone-box a img {
   right: 0;
   bottom: auto;
   width: auto;
-  height: 410px;
+  height: 350px;
   z-index: 0;
 }
 .section-header .title {
   color: #404040;
   font-size: 48px;
   font-weight: 600;
-  line-height: 1.5;
-  margin-bottom: 0;
+  line-height: normal;
+  margin-bottom: 10px;
 }
 .section-header .breadcrumps-box {
   color: #828282;
@@ -10631,6 +10633,12 @@ footer .footer-links ul li a {
 }
 #account-page .section-health-status {
   padding-bottom: 60px;
+}
+#account-page .section-health-status.admin-users .table {
+  margin-bottom: 0;
+}
+#account-page .section-health-status.admin-users .table tbody tr {
+  cursor: pointer;
 }
 #account-page .section-health-status .section-title {
   text-align: center;

@@ -1,20 +1,22 @@
 .section-header {
 	position: relative;
-	padding: 160px 0 140px;
+	padding: 110px 0;
 	background-color: #f0f4f8;
 	.container {
 		position: relative;
 		z-index: 1;
+		max-width: 600px;
+		margin: 0 auto 0 15%;
 	}
 	img {
 		@include pos(0, 0, auto, auto);
 		width: auto;
-		height: 410px;
+		height: 350px;
 		z-index: 0;
 	}
 	.title {
-		@include text($black, 48px, 600);
-		margin-bottom: 0;
+		@include text($black, 48px, 600, normal);
+		margin-bottom: 10px;
 	}
 	.breadcrumps-box {
 		@include text(#828282, 14px);

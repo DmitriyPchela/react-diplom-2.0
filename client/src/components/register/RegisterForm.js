@@ -16,7 +16,6 @@ const userData = {
 const RegisterForm = props => {
 	const [user, setUser] = useState(userData);
 	const [errors, setErrors] = useState({});
-	const [success, setSuccess] = useState(false);
 	
 	const validate = (data) => {
 		const errors = {};

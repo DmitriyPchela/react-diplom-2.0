@@ -21,7 +21,7 @@ const NewsSidebar = () => {
 				<ul className="p-0 m-0">
 					<li className="d-flex flex-wrap justify-content-between">
 						<Link className="image-link" to="/news">
-							<img src="images/hero.jpg" alt="News post small"/>
+							<img src="/images/hero.jpg" alt="News post small"/>
 						</Link>
 						<div className="entry-content">
 							<h3 className="entry-title">
@@ -33,7 +33,7 @@ const NewsSidebar = () => {
 					
 					<li className="d-flex flex-wrap justify-content-between">
 						<Link className="image-link" to="/news">
-							<img src="images/hero.jpg" alt="News post small"/>
+							<img src="/images/hero.jpg" alt="News post small"/>
 						</Link>
 						<div className="entry-content">
 							<h3 className="entry-title">
@@ -45,7 +45,7 @@ const NewsSidebar = () => {
 					
 					<li className="d-flex flex-wrap justify-content-between">
 						<Link className="image-link" to="/news">
-							<img src="images/hero.jpg" alt="News post small"/>
+							<img src="/images/hero.jpg" alt="News post small"/>
 						</Link>
 						<div className="entry-content">
 							<h3 className="entry-title">

@@ -7,7 +7,7 @@ const NavHeader = props => {
 		<header>
 			<div className="container nav-header-box">
 				<NavLink exact to="/" className="logo-box">
-					<img src="images/logo.png" alt="Logo img"/>
+					<img src={require('../../assets/images/logo.png')} alt="Logo img"/>
 				</NavLink>
 				<nav className="header-nav">
 					<NavLink to="/about" className="header-nav__item">Про нас</NavLink>
@@ -20,7 +20,7 @@ const NavHeader = props => {
 						props.isAuthorized ?
 							<div className="phone-box">
 								<Link to="/account">
-									<img src="images/user.svg" alt="Call icon"/>
+									<img src={require('../../assets/images/user.svg')} alt="Call icon"/>
 									Особистий кабінет
 								</Link>
 							</div>
@@ -29,7 +29,7 @@ const NavHeader = props => {
 								<Link to="/registration" className="register-link">Реєстрація</Link>
 								<div className="phone-box">
 									<Link to="/login">
-										<img src="images/user.svg" alt="Call icon"/>
+										<img src={require('../../assets/images/user.svg')} alt="Call icon"/>
 										Увійти
 									</Link>
 								</div>

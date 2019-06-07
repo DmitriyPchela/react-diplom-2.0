@@ -42,7 +42,8 @@ const LoginPage = props => {
                     props.setUserProfile({
                         login: res.data.data.profile.login,
                         token: res.data.data.token,
-                        isAuthorized: res.data.data.isAuthorized
+                        isAuthorized: res.data.data.isAuthorized,
+                        isAdmin: res.data.data.profile.isAdmin
                     });
                     props.history.push('/account');
                 } else {
@@ -54,7 +55,7 @@ const LoginPage = props => {
 
     return (
         <main id="login-page">
-            <HeaderPage bgImage="images/about-bg.png" pageLink="/login" pageName="Авторизація"/>
+            <HeaderPage bgImage="/images/about-bg.png" pageLink="/login" pageName="Авторизація"/>
             <div className="section-login">
                 <div className="container">
                     <LoginForm errors={errors} onSubmit={handleSubmit} onChange={handleChange}/>

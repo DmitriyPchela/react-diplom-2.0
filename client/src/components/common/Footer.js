@@ -10,7 +10,7 @@ const NavFooter = () => {
 					<div className="col-12 col-md-6 col-lg-4">
 						<div className="footer-about">
 							<Link to="/">
-								<img src="images/logo.png" alt="Logo"/>
+								<img src={require('../../assets/images/logo.png')} alt="Logo"/>
 							</Link>
 							<p className="text">
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cupiditate
