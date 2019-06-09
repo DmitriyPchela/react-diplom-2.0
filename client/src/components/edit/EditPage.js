@@ -7,7 +7,7 @@ const EditPage = () => {
 	return (
 		<main id="edit-page">
 			<HeaderPage
-				bgImage="/../../assets/images/about-bg.png"
+				bgImage={require('../../assets/images/about-bg.png')}
 				pageLink="/edit"
 				pageName="Редагування профілю"
 				pageLinkPrev="/account"

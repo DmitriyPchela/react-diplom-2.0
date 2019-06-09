@@ -34,7 +34,7 @@ const Appointment = ({onChange, onSubmit}) => {
 							<h2 className="appointment-box__title">Допомога</h2>
 							<div className="phone-box">
 								<a href="tel: +38 (068) 483 92 94">
-									<img src="/images/emergency-call.png" alt="Call icon"/>
+									<img src={require('../../../assets/images/emergency-call.png')} alt="Call icon"/>
 									+38 (068) 483 92 94
 								</a>
 							</div>
