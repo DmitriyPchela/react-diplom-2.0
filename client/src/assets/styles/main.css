@@ -10578,12 +10578,6 @@ footer .footer-links ul li a {
   opacity: 0.4;
   font-style: italic;
 }
-#account-page .section-account .user-photo-box {
-  width: 150px;
-  overflow: hidden;
-  border-radius: 50%;
-  margin: 0 auto;
-}
 #account-page .section-account .user-info-first {
   display: flex;
   flex-direction: column;
@@ -10976,6 +10970,112 @@ footer .footer-links ul li a {
   font-size: 16px;
   font-weight: 600;
   color: #828282;
+}
+
+#user-page {
+  padding-bottom: 60px;
+}
+#user-page .section-user-info {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+#user-page .section-user-info p {
+  text-align: center;
+  color: #404040;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.4;
+  font-style: italic;
+}
+#user-page .section-user-info .link-back {
+  margin-bottom: 20px;
+}
+#user-page .section-user-info .link-back a {
+  text-decoration: underline;
+  color: #18a3eb;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+#user-page .section-user-info .link-back a i {
+  margin-right: 10px;
+}
+#user-page .section-user-info .user-info-first {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+#user-page .section-user-info .user-info-first__name {
+  color: #404040;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+#user-page .section-user-info .user-info-second {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  border-left: 2px dashed #ccc;
+  padding-left: 30px;
+}
+#user-page .section-user-info .user-info-second__item {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#user-page .section-user-info .user-info-second__item span {
+  color: #404040;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+#user-page .section-user-info .user-info-second__item span.field-name {
+  font-weight: 600;
+  margin-right: 20px;
+}
+#user-page .section-user-health .section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+#user-page .section-user-health .table p {
+  text-align: center;
+  margin-bottom: 0;
+  color: #404040;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.4;
+  font-style: italic;
+}
+#user-page .section-user-health .table p a {
+  color: #18a3eb;
+  text-decoration: underline;
+}
+#user-page .section-user-health .table thead {
+  background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
+}
+#user-page .section-user-health .table thead tr th {
+  vertical-align: middle;
+  text-align: center;
+  color: #ffffff;
+}
+#user-page .section-user-health .table tbody tr td {
+  text-align: center;
+}
+#user-page .btn-custom {
+  min-width: 150px;
 }
 
 /*# sourceMappingURL=main.css.map */

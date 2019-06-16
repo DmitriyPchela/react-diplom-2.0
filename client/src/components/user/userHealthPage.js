@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderPage from "../common/HeaderPage";
-import EditInfo from "../edit/includes/EditInfo";
-import EditTable from "../edit/includes/EditTable";
+import UserInfo from "./includes/userInfo";
+import UserHealthTable from "./includes/userTable";
 
 const UserHealthPage = props => {
+	const [userInfo, setUserInfo] = useState(props.location.state);
+	
 	return (
 		<main id="user-page">
 			<HeaderPage
-				bgImage="/images/about-bg.png"
+				bgImage={require('../../assets/images/about-bg.png')}
 				pageLink="/edit"
 				pageName="Здоров'є паціента"
 				pageLinkPrev="/account"
 				pageNamePrev="Особистий кабінет"
 			/>
-			<EditInfo/>
-			<EditTable/>
+			<UserInfo user={userInfo.userInfo}/>
+			<UserHealthTable health={userInfo.userHealth}/>
+			<div className="btn-wrap d-flex justify-content-center mt-5">
+				<button className="btn-custom">Виписати ліки</button>
+			</div>
 		</main>
 	);
 };

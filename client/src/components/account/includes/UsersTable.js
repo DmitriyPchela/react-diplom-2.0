@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import {withRouter } from 'react-router-dom';
-
-import {usersApi} from "../../../api";
-
+import {usersApi, healthStatusApi} from "../../../api";
 
 const UsersTable = (props) => {
-	const [users, setUsers] = useState([]);
+	const [usersInfo, setUsersInfo] = useState([]);
+	const [usersHealth, setUsersHealth] = useState([]);
 
 	useEffect(() => {
 		let usersArr = [];
+		let usersHealthArr = [];
 		usersApi.list().then(res => {
 			res.data.data.map(item => {
 				if (item.login !== 'admin') {
 					usersArr.push(item);
-					setUsers({users: usersArr});
+					setUsersInfo({usersInfo: usersArr});
 				}
 			});
 		});
+		healthStatusApi.list().then(res => {
+			res.data.data.map(item => {
+				usersHealthArr.push(item);
+				setUsersHealth({usersHealth: usersHealthArr});
+			});
+		})
 	}, []);
-
-	const handleView = (id) => () => {
-		props.history.push('/user/'+ id);
+	
+	const handleView = (userId, userIndex, userLogin) => () => {
+		props.history.push('/user/'+ userId, {
+			userInfo: usersInfo.usersInfo[userIndex],
+			userHealth: usersHealth.usersHealth.filter(item => item.userID === userLogin && item)
+		});
 	};
-
-	console.log(users);
 
 	return (
 		<section className="section-health-status admin-users">
@@ -40,8 +47,8 @@ const UsersTable = (props) => {
 					</thead>
 					<tbody>
 					{
-						users.users && users.users.map(item =>
-							<tr key={item._id} onClick={handleView(item._id)}>
+						usersInfo.usersInfo && usersInfo.usersInfo.map((item, index) =>
+							<tr key={item._id} onClick={handleView(item._id, index, item.login)}>
 								<td>{item.name}</td>
 								<td>{item.surname}</td>
 								<td>{item.email}</td>

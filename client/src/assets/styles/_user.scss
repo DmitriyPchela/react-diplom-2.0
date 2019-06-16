@@ -1,27 +1,30 @@
-#account-page {
-	.section-account {
-		padding: 60px 0;
+#user-page {
+	padding-bottom: 60px;
+	.section-user-info {
+		padding-top: 30px;
+		padding-bottom: 80px;
 		p {
 			text-align: center;
 			@include text($black, 16px, 300);
 			opacity: 0.4;
 			font-style: italic;
 		}
+		.link-back {
+			margin-bottom: 20px;
+			a {
+				text-decoration: underline;
+				@include text($blue, 16px);
+				i {
+					margin-right: 10px;
+				}
+			}
+		}
 		.user-info-first {
 			@include flex(column, center, flex-start);
 			height: 100%;
 			&__name {
 				@include text($black, 24px, 600);
-				margin-bottom: 20px;
-			}
-			&__links {
-				a {
-					min-width: 150px;
-					margin-right: 20px;
-					&:last-child {
-						margin-right: 0;
-					}
-				}
+				margin-bottom: 0;
 			}
 		}
 		.user-info-second {
@@ -42,18 +45,7 @@
 			}
 		}
 	}
-	.section-health-status {
-		padding-bottom: 60px;
-		&.admin-users {
-			.table {
-				margin-bottom: 0;
-				tbody {
-					tr {
-						cursor: pointer;
-					}
-				}
-			}
-		}
+	.section-user-health {
 		.section-title {
 			text-align: center;
 			margin-bottom: 30px;
@@ -91,12 +83,7 @@
 			}
 		}
 	}
-	.section-health-chart {
-		padding-bottom: 60px;
-		.section-title {
-			text-align: center;
-			margin-bottom: 30px;
-			@include text($black, 48px, 700);
-		}
+	.btn-custom {
+		min-width: 150px;
 	}
 }
