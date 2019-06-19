@@ -20,10 +20,6 @@ const UserInfo = ({user}) => {
 					<div className="col-6">
 						<div className="user-info-second">
 							<div className="user-info-second__item">
-								<span className="field-name">Логін: </span>
-								<span className="field-text">{user.login}</span>
-							</div>
-							<div className="user-info-second__item">
 								<span className="field-name">Email: </span>
 								<span className="field-text">{user.email}</span>
 							</div>

@@ -3,15 +3,11 @@ const router = express.Router();
 const { HealthStatus } = require('../database/db');
 const accessMiddleware = require('../middleware/accessMiddleware');
 
-// THIS FUNC THROWS ERROR IF PARAMS IS WRONG -> CHECK ANOTHER ERRORS
-const { WrongParametersError } = require('../lib/errors');
-
 router
     .get("/health_status", accessMiddleware, async (req, res, next) => {
         try {
             const result = await HealthStatus.find();
-
-            // !!!  USE ONLY THIS SCHEMA FOR RESPONSE -> { status: 'success' or 'error', data: [] or {} or string } !!! 
+            
             res.json({
                 status: 'success',
                 data: result,
@@ -36,8 +32,6 @@ router
         }
     })
 
-    // this is our update method
-    // this method overwrites existing data in our database
     .put("/health_status/:id", accessMiddleware, async (req, res, next) => {
         try {
             req.body.map(async item => {
@@ -53,8 +47,6 @@ router
         }
     })
 
-    // this is our delete method
-    // this method removes existing data in our database
     .delete("/health_status/:id", accessMiddleware, async (req, res, next) => {
         try {
             const { id } = req.params;
@@ -69,8 +61,6 @@ router
         }
     })
 
-    // this is our create method
-    // this method adds new data in our database
     .post("/health_status", accessMiddleware, async (req, res, next) => {
         try {
             let healthStatus = new HealthStatus();

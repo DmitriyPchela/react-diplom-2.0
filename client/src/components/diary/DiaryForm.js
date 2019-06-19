@@ -3,18 +3,8 @@ import LC from "local-storage";
 
 import { healthStatusApi } from '../../api';
 import InputText from "../common/formComponents/InputText";
-import InputSelect from "../common/formComponents/InputSelect";
 import InputArea from "../common/formComponents/InputArea";
 import { show, ModalSuccess } from "../common/ModalSuccess";
-
-const healthyOptions = [
-	"Задовільне",
-	"Слабкість",
-	"Запаморочення",
-	"Головний біль легка",
-	"Головная біль",
-	"Головная біль з приступами"
-];
 
 const initialData = {
 	date: '',
@@ -22,7 +12,7 @@ const initialData = {
 	pressureUp: '',
 	pressureDown: '',
 	pulse: '',
-	healthy: 'default',
+	healthy: '',
 	comment: '',
 	userID: ''
 };
@@ -62,7 +52,6 @@ const DiaryForm = props => {
 		if (Object.keys(errors).length === 0) {
 			healthStatusApi.create(data).then(res => {
 				if (res.data.status === 'success') {
-					console.log(123);
 					show({
 						title: 'Дані збережено!',
 						desc: 'Можете переглянути їх в особистому кабінеті.'
@@ -87,7 +76,7 @@ const DiaryForm = props => {
 			<InputText
 				type="text"
 				name="time"
-				label="Время"
+				label="Час"
 				error={errors.time}
 				value={data.time}
 				onChange={handleChange}
@@ -124,12 +113,12 @@ const DiaryForm = props => {
 				onChange={handleChange}
 				className="col-12"
 			/>
-			<InputSelect
+			<InputArea
 				name="healthy"
 				label="Самопочуття"
 				error={errors.healthy}
 				value={data.healthy}
-				options={healthyOptions}
+				rows={1}
 				onChange={handleChange}
 				className="col-12"
 			/>
@@ -138,6 +127,7 @@ const DiaryForm = props => {
 				label="Додаток"
 				value={data.comment}
 				onChange={handleChange}
+				rows={3}
 				className="col-12"
 			/>
 			<div className="form-group col-12 d-flex justify-content-center">

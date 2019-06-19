@@ -16,7 +16,8 @@ import RegisterPage from "./register/RegisterPage";
 import Login from "./login/LoginPage";
 import Account from "./account/AccountPage";
 import Edit from "./edit/EditPage";
-import userHealthInfo from "./user/userHealthPage";
+import userHealthInfo from "./user/UserHealthPage";
+import {PrivateRoute} from "./common/hoc/PrivateRoute";
 
 
 const App = props => {
@@ -53,9 +54,9 @@ const App = props => {
 				<Route path="/services" component={DiaryPage}/>
 				<Route path="/registration" component={RegisterPage}/>
 				<Route path="/login" component={Login}/>
-				<Route path="/account" component={Account}/>
-				<Route path="/edit" component={Edit}/>
-				<Route path="/user/:id" component={userHealthInfo}/>
+				<PrivateRoute path="/account" component={Account}/>
+				<PrivateRoute path="/edit" component={Edit}/>
+				<PrivateRoute path="/user/:id" component={userHealthInfo}/>
 			</Switch>
 			<Footer/>
 		</>

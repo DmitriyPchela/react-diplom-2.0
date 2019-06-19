@@ -5,9 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { healthStatusApi } from "../../../api";
 import InputText from "../../common/formComponents/InputText";
-import InputSelect from "../../common/formComponents/InputSelect";
 import { ask, ModalAsk } from "../../common/ModalAsk";
 import {Link} from "react-router-dom";
+import InputArea from "../../common/formComponents/InputArea";
 
 const initialData = {
 	date: '',
@@ -15,18 +15,9 @@ const initialData = {
 	pressureUp: '',
 	pressureDown: '',
 	pulse: '',
-	healthy: 'default',
+	healthy: '',
 	comment: ''
 };
-
-const healthyOptions = [
-	"Задовільне",
-	"Слабкість",
-	"Запаморочення",
-	"Головний біль легка",
-	"Головная біль",
-	"Головная біль з приступами"
-];
 
 const EditTable = () => {
 	const [data, setData] = useState({ healthData: initialData, newHealthData: initialData });
@@ -167,11 +158,11 @@ const EditTable = () => {
 										/>
 									</td>
 									<td>
-										<InputSelect
+										<InputArea
 											name="healthy"
 											label="Самопочуття"
+											rows={2}
 											value={item.healthy}
-											options={healthyOptions}
 											onChange={handleChange(index)}
 										/>
 									</td>

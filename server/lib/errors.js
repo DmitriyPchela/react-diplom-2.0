@@ -28,17 +28,10 @@ class ForbiddenError extends BaseError {
         this.message = params.message || 'Permission denied';
     }
 }
-class WrongParametersError extends BaseError {
-    constructor(params = {}) {
-        super(params.message);
-        this.message = params.message || 'Wrong parameters';
-    }
-}
 
 module.exports = {
     BaseError,
     NotFoundError,
     ForbiddenError,
     UnauthorizedError,
-    WrongParametersError,
 };

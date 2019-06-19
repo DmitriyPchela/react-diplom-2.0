@@ -29,16 +29,31 @@ const DiaryPage = () => {
 					</div>
 				</div>
 			</section>
-			<section className="section-services">
-				<div className="container">
-					<h2 className="sub-title">Щоденник контролю</h2>
-					{
-						LC.get('profile') != null ?
-							<DiaryForm/>
-							: <p className="info">Для заповнення щоденнику контролю, необхідно <Link to="/registration"> зареєструватися</Link> та увійти до <Link to="/account"> особистого кабінету!</Link></p>
-					}
-				</div>
-			</section>
+			{
+				LC.get('profile') !== null ?
+					LC.get('profile').isAdmin ?
+						'' :
+						<>
+							<section className="section-services">
+								<div className="container">
+									<h2 className="sub-title">Щоденник контролю</h2>
+									<DiaryForm/>
+								</div>
+							</section>
+						</> :
+					<>
+						<section className="section-services">
+							<div className="container">
+								<h2 className="sub-title">Щоденник контролю</h2>
+								<p className="info">
+									Для заповнення щоденнику контролю, необхідно <Link to="/registration"> зареєструватися!</Link>
+								</p>
+							</div>
+						</section>
+					</>
+				
+			}
+			
 		</main>
 	);
 };

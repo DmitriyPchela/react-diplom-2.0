@@ -2,6 +2,8 @@ import React from 'react';
 import HeaderPage from "../common/HeaderPage";
 import EditInfo from "./includes/EditInfo";
 import EditTable from "./includes/EditTable";
+import LC from "local-storage";
+
 
 const EditPage = () => {
 	return (
@@ -14,7 +16,11 @@ const EditPage = () => {
 				pageNamePrev="Особистий кабінет"
 			/>
 			<EditInfo/>
-			<EditTable/>
+			{
+				LC.get('profile').isAdmin ?
+					'' :
+					<EditTable/>
+			}
 		</main>
 	);
 };
