@@ -3,13 +3,13 @@ import {Link} from "react-router-dom";
 import LC from "local-storage";
 
 
-import HeaderPage from "../common/HeaderPage";
+import SectionHeader from "../common/SectionHeader";
 import DiaryForm from "./DiaryForm";
 
 const DiaryPage = () => {
 	return (
 		<main id='diaryPage'>
-			<HeaderPage bgImage={'https://colorlib.com/preview/theme/medart/images/service-bg.png'} pageLink={'/services'} pageName={"Послуги"}/>
+			<SectionHeader bgImage={'https://colorlib.com/preview/theme/medart/images/service-bg.png'} pageLink={'/services'} pageName={"Послуги"}/>
 			<section className="section-info">
 				<div className="container">
 					<h1 className="title">Про наші послуги</h1>

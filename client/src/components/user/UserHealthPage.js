@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HeaderPage from "../common/HeaderPage";
+import SectionHeader from "../common/SectionHeader";
 import UserInfo from "./includes/UserInfo";
 import UserHealthTable from "./includes/UserTable";
 import ModalMedicine from "./includes/ModalMedicine";
@@ -9,7 +9,7 @@ const UserHealthPage = props => {
 	
 	return (
 		<main id="user-page">
-			<HeaderPage
+			<SectionHeader
 				bgImage={require('../../assets/images/about-bg.png')}
 				pageLink="/edit"
 				pageName="Дані пацієнта"

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import HeaderPage from "../common/HeaderPage";
+import SectionHeader from "../common/SectionHeader";
 import InputMask from "react-input-mask";
 
 const appointmentData = {
@@ -27,7 +27,7 @@ const ContactPage = () => {
 	
 	return (
 		<main id='contactPage'>
-			<HeaderPage bgImage="https://colorlib.com/preview/theme/medart/images/contact-bg.png" pageLink="/contact" pageName="Контакти"/>
+			<SectionHeader bgImage="https://colorlib.com/preview/theme/medart/images/contact-bg.png" pageLink="/contact" pageName="Контакти"/>
 			<section className="section-appointment">
 				<div className="container">
 					<div className="row">

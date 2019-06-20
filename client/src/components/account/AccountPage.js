@@ -1,7 +1,7 @@
 import React from 'react';
 import LC from "local-storage";
 
-import HeaderPage from "../common/HeaderPage";
+import SectionHeader from "../common/SectionHeader";
 import Info from './includes/Info'
 import HealthTable from "./includes/HealthTable";
 import HealthChart from "./includes/HealthChart";
@@ -12,7 +12,7 @@ const AccountPage = props => {
 
     return (
         <main id="account-page">
-            <HeaderPage
+            <SectionHeader
                 bgImage={require('../../assets/images/about-bg.png')}
                 pageLink="/account"
                 pageName={isAdmin ? 'Особистий кабінет адміністратора' : 'Особистий кабінет користувача'}/>

@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Collapsible from 'react-collapsible';
-import HeaderPage from "../common/HeaderPage";
+import SectionHeader from "../common/SectionHeader";
 
 
 const AboutPage = () => {
 	return (
 		<main id='aboutPage'>
-			<HeaderPage bgImage={require('../../assets/images/about-bg.png')} pageLink="/about" pageName="Про нас"/>
+			<SectionHeader bgImage={require('../../assets/images/about-bg.png')} pageLink="/about" pageName="Про нас"/>
 			<section className="section-about">
 				<div className="container">
 					<div className="row">
