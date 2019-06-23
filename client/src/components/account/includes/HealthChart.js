@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
 const HealthChart = ({ healthData }) => {
-	const [data, setData] = useState(healthData);
-	
+	const [data, setData] = useState({});
+
+
 	// getUserHealth = (data) => {
 	// 	this.setState(data.filter(item => {
 	// 		return item.userID ===  && item;
 	// 	}));
 	// };
-	
+
 	// apiHealthSuccess = (data) => {
 	// 	this.getUserHealth(data);
 	// };
-	
+
 	 useEffect(() => {
-		 console.log(data);
+
+	 	setData(healthData)
 		 // this.setState({...healthData, apiHealthCall.data.data)
 		 // apiHealthCall.statusText === 'OK' ? this.apiHealthSuccess(apiHealthCall.data.data) : alert(apiHealthCall.statusText);
-		
+
 		 // const date = this.state.healthData.length > 0 && this.state.healthData.map(item => {
 		 // 	return item.date
 		 // });
@@ -59,8 +61,10 @@ const HealthChart = ({ healthData }) => {
 		 // };
 		 //
 		 // this.setState({...data, chartData});
-	 }, []);
-	
+	 });
+
+	console.log('data', data);
+
 	return (
 		// data.labels !== false &&
 		<section className="section-health-chart">

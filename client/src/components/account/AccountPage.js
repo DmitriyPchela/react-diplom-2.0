@@ -8,26 +8,26 @@ import HealthTable from "./includes/HealthTable";
 import HealthChart from "./includes/HealthChart";
 import { healthStatusApi } from "../../api";
 
+/*
+* Если нет профиля викидывает ошибку
+* */
 const isAdmin = LC.get('profile').isAdmin;
 const login = LC.get('profile').login;
 
 class AccountPage extends PureComponent {
-    state = {
-        healthStatus: {}
-    };
-    
+    state =  {healthStatus: null };
+
     componentDidMount() {
-        healthStatusApi.listUser(login).then(res => {
-            this.setState({
-                healthStatus: res.data.data
-            });
-        });
+        healthStatusApi.listUser(login)
+          .then(res => {this.setState({ healthStatus: res.data.data });})
+          /*Не забывай про оброботку ошибок. ЭТО ОЧЕНЬ ВАЖНО*/
+          .catch(err => { console.log(err);})
     }
-    
+
     render () {
         const { healthStatus } = this.state;
         console.log(healthStatus);
-    
+
         return (
             <main id="account-page">
                 <SectionHeader
