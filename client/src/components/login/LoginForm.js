@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {connect} from "react-redux";
 import {toast, ToastContainer} from "react-toastify";
-import {withRouter} from "react-router-dom";
 
 
 import InputText from "../common/formComponents/InputText";

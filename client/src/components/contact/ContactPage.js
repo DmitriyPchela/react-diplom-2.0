@@ -36,11 +36,11 @@ const ContactPage = () => {
 								<h2 className="appointment-box__title">Контактна інформація</h2>
 								<ul className="list p-0 m-0">
 									<li className="list__item">
-										Phone:
+										Телефон:
 										<span>+38 (068) 483-92-94</span>
 									</li>
 									<li className="list__item">
-										Email:
+										E-mail:
 										<span>d.pchelyanskiy97z@gmail.com</span>
 									</li>
 								</ul>
@@ -51,20 +51,12 @@ const ContactPage = () => {
 								<h2 className="appointment-box__title">Графік консультацій</h2>
 								<ul className="list p-0 m-0">
 									<li className="list__item">
-										Monday - Thursday
-										<span>8.00 - 19.00</span>
+										Пн-Пт
+										<span>8:00 - 19:00</span>
 									</li>
 									<li className="list__item">
-										Friday
-										<span>8.00 - 18.30</span>
-									</li>
-									<li className="list__item">
-										Saturday
-										<span>9:30 - 17.00</span>
-									</li>
-									<li className="list__item">
-										Sunday
-										<span>9.30 - 15.00</span>
+										Сб-Вс
+										<span>9:30 - 17:00</span>
 									</li>
 								</ul>
 							</div>
@@ -79,9 +71,7 @@ const ContactPage = () => {
 									</a>
 								</div>
 								<p className="appointment-box__text">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid aspernatur
-									autem consequatur, deleniti dolores enim eos excepturi ipsa labore laudantium odio
-									officiis perferendis perspiciatis quam ratione soluta vero voluptates.
+									Якщо Вам потрібна допомога, то зв'яжіться з Вашим лікарем.
 								</p>
 							</div>
 						</div>

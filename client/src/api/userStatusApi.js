@@ -8,7 +8,7 @@ export const healthStatusApi = {
         })
     },
     
-    listUser: ({ login }) => {
+    listUser: (login) => {
         return request({
             url: "/health_status/logged",
             method: 'POST',
