@@ -26,7 +26,7 @@ const EditTable = () => {
 		if (LC.get('profile') != null) {
 			const userId = LC.get('profile').login;
 			
-			healthStatusApi.listUser({login: userId}).then(res => {
+			healthStatusApi.listUser(userId).then(res => {
 				setData(prev => ({
 					...prev,
 					healthData: res.data.data,

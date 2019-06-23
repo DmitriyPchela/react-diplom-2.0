@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import LC from "local-storage";
 
 import SectionHeader from "../common/SectionHeader";
@@ -6,28 +6,11 @@ import Info from './includes/Info';
 import UsersTable from "./includes/UsersTable";
 import HealthTable from "./includes/HealthTable";
 import HealthChart from "./includes/HealthChart";
-import { healthStatusApi } from "../../api";
 
 const isAdmin = LC.get('profile').isAdmin;
-const login = LC.get('profile').login;
 
-class AccountPage extends PureComponent {
-    state = {
-        healthStatus: {}
-    };
-    
-    componentDidMount() {
-        healthStatusApi.listUser(login).then(res => {
-            this.setState({
-                healthStatus: res.data.data
-            });
-        });
-    }
-    
+class AccountPage extends Component {
     render () {
-        const { healthStatus } = this.state;
-        console.log(healthStatus);
-    
         return (
             <main id="account-page">
                 <SectionHeader
@@ -40,7 +23,7 @@ class AccountPage extends PureComponent {
                         <UsersTable/> :
                         <>
                             <HealthTable/>
-                            <HealthChart healthData={healthStatus}/>
+                            <HealthChart/>
                         </>
                 }
             </main>

@@ -29,7 +29,7 @@ const HealthTable = props => {
 	return (
 		<section className="section-health-status">
 			<div className="container">
-				<h2 className="section-title">Стан здоровья</h2>
+				<h2 className="section-title">Стан здоров'я</h2>
 				<table className="table table-bordered table-hover ">
 					<thead>
 					<tr>
