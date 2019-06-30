@@ -8,9 +8,7 @@ router
 		try {
 			const id = req.params.id;
 			
-			console.log(id);
-			
-			const result = await Medicine.findOne({userID: id});
+			const result = await Medicine.find({userID: id});
 			
 			res.json({
 				status: 'success',

@@ -37,32 +37,9 @@
 	.section-health-table {
 		padding-bottom: 80px;
 		.table {
-			p {
-				text-align: center;
-				margin-bottom: 0;
-				@include text($black, 16px, 300);
-				opacity: 0.4;
-				font-style: italic;
-				a {
-					color: $blue;
-					text-decoration: underline;
-				}
-
-			}
-			thead {
-				background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
-				tr {
-					th {
-						vertical-align: middle;
-						text-align: center;
-						color: $white;
-					}
-				}
-			}
 			tbody {
 				tr {
 					td {
-						text-align: center;
 						vertical-align: middle;
 						.form-group {
 							margin-bottom: 0;

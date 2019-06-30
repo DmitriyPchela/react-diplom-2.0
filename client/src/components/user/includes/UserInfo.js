@@ -14,7 +14,7 @@ const UserInfo = ({user}) => {
 				<div className="row">
 					<div className="col-6">
 						<div className="user-info-first align-items-center">
-							<h2 className="user-info-first__name">{user.surname} {user.name}</h2>
+							<h2 className="user-info-first__name">{user.name} {user.surname}</h2>
 						</div>
 					</div>
 					<div className="col-6">

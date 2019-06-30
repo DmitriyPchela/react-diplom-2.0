@@ -29,7 +29,6 @@ const EditInfo = () => {
 				setData({ ...data, user: res.data.data, newUser: res.data.data });
 			});
 		}
-
 	}, []);
 
 	const validate = (data) => {

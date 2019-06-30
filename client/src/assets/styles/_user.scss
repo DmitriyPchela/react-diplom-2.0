@@ -1,5 +1,17 @@
 #user-page {
 	padding-bottom: 60px;
+	.section-title {
+		text-align: center;
+		margin-bottom: 30px;
+		@include text($black, 48px, 700);
+	}
+	.section-medicine {
+		padding-bottom: 60px;
+		.table {
+			max-width: 60%;
+			margin: 0 auto;
+		}
+	}
 	.section-user-info {
 		padding-top: 30px;
 		padding-bottom: 80px;
@@ -40,44 +52,6 @@
 					&.field-name {
 						font-weight: 600;
 						margin-right: 20px;
-					}
-				}
-			}
-		}
-	}
-	.section-user-health {
-		.section-title {
-			text-align: center;
-			margin-bottom: 30px;
-			@include text($black, 48px, 700);
-		}
-		.table {
-			p {
-				text-align: center;
-				margin-bottom: 0;
-				@include text($black, 16px, 300);
-				opacity: 0.4;
-				font-style: italic;
-				a {
-					color: $blue;
-					text-decoration: underline;
-				}
-
-			}
-			thead {
-				background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
-				tr {
-					th {
-						vertical-align: middle;
-						text-align: center;
-						color: $white;
-					}
-				}
-			}
-			tbody {
-				tr {
-					td {
-						text-align: center;
 					}
 				}
 			}

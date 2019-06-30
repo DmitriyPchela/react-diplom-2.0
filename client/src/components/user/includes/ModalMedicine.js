@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import InputText from "../../common/formComponents/InputText";
 import InputArea from "../../common/formComponents/InputArea";
 import InputSelect from "../../common/formComponents/InputSelect";
-import {medicineApi} from "../../../api/medicineApi";
+import {medicineApi} from "../../../api";
+import {toast, ToastContainer} from "react-toastify";
+
 
 const initState = {
 	time: 'default',
@@ -26,12 +28,23 @@ const ModalMedicine = ({userData}) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		medicineApi.create(medicine).then(res => {
-			console.log(res);
+			if (res.data.status === 'success') {
+				toast.success('✓ Ліки відправлено!', {
+					position: "top-right",
+					autoClose: 2000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: false,
+					draggable: true
+				});
+				setMedicine(initState);
+			}
 		});
 	};
 	
 	return (
 		<div className="container">
+			<ToastContainer/>
 			<div className="btn-wrap d-flex justify-content-center mt-5">
 				<button type="button" className="btn-custom" data-toggle="modal" data-target="#modalCure">Виписати ліки</button>
 			</div>

@@ -50,7 +50,6 @@ const HealthChart = () => {
 					},
 				]
 			};
-			
 			setData(chartData);
 		});
 	};
