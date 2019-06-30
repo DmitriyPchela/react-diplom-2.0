@@ -6,7 +6,7 @@ import RegisterForm from "./RegisterForm";
 const RegisterPage = props => {
 	return (
 		<main id="registration-page">
-			<HeaderPage bgImage="/images/about-bg.png" pageLink="/registration" pageName="Реєстрація"/>
+			<HeaderPage bgImage={require('../../assets/images/about-bg.png')} pageLink="/registration" pageName="Реєстрація"/>
 			<section className="section-register">
 				<RegisterForm/>
 			</section>

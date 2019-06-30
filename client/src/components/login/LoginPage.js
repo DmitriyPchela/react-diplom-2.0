@@ -55,7 +55,7 @@ const LoginPage = props => {
 
     return (
         <main id="login-page">
-            <HeaderPage bgImage="/images/about-bg.png" pageLink="/login" pageName="Авторизація"/>
+            <HeaderPage bgImage={require('../../assets/images/about-bg.png')} pageLink="/login" pageName="Авторизація"/>
             <div className="section-login">
                 <div className="container">
                     <LoginForm errors={errors} onSubmit={handleSubmit} onChange={handleChange}/>
