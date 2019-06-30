@@ -3,6 +3,7 @@ import InputText from "../common/formComponents/InputText";
 import InputMask from "react-input-mask";
 import {usersApi} from "../../api";
 import { show, ModalSuccess } from "../common/ModalSuccess";
+import {ToastContainer, toast} from "react-toastify";
 
 const userData = {
 	name: '',
@@ -20,7 +21,7 @@ const RegisterForm = props => {
 	const validate = (data) => {
 		const errors = {};
 		if (!data.login) errors.login = "Поле логін обов'язкове";
-		if (!data.password || data.password.length < 6) errors.password = "Поле пароль обов'язкове";
+		if (data.password.length < 6) errors.password = "Пароль має бути не менше 6 символів";
 		if (!data.email) errors.email = "Поле email обов'язкове";
 		if (!data.phone) errors.phone = "Поле телефон обов'язкове";
 		
@@ -45,6 +46,15 @@ const RegisterForm = props => {
 						desc: 'Можете перейти до авторизації'
 					});
 					return setUser(userData);
+				} else if (res.data.status === 'error') {
+					toast.error(`⚠ ${res.data.message.errmsg}`, {
+						position: "top-right",
+						autoClose: 5000,
+						hideProgressBar: true,
+						closeOnClick: true,
+						pauseOnHover: false,
+						draggable: true
+					});
 				}
 			});
 		}
@@ -52,6 +62,7 @@ const RegisterForm = props => {
 	
 	return (
 		<form name="form" onSubmit={handleSubmit} className="form-container">
+			<ToastContainer/>
 			<InputText
 				type="text"
 				name="name"

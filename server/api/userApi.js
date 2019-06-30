@@ -3,9 +3,6 @@ const router = express.Router();
 const { User } = require('../database/db');
 const accessMiddleware = require('../middleware/accessMiddleware');
 
-// THIS FUNC THROWS ERROR IF PARAMS IS WRONG -> CHECK ANOTHER ERRORS
-const { WrongParametersError } = require('../lib/errors');
-
 router
 	.get("/users", accessMiddleware, async (req, res, next) => {
 		try {
@@ -24,11 +21,7 @@ router
 		try {
 			const id = req.params.id;
 
-			const result = await User.findOne({
-				where: {
-					_id: id,
-				}
-			});
+			const result = await User.findOne({_id: id});
 
 			res.json({
 				status: 'success',
@@ -52,9 +45,7 @@ router
 			next(error);
 		}
 	})
-
-	// this is our update method
-	// this method overwrites existing data in our database
+	
 	.put("/users/:id", accessMiddleware, async (req, res, next) => {
 		try {
 			let { name, surname, login, email, phone, password, passwordNew, token } = req.body;
@@ -70,24 +61,7 @@ router
 			next(error);
 		}
 	})
-
-	// this is our delete method
-	// this method removes existing data in our database
-	.delete("/users/:id", accessMiddleware, async (req, res, next) => {
-		try {
-			const { id } = req.params;
-			if (!id || isNaN(id)) { throw WrongParametersError }
-
-			await User.findOneAndDelete(id);
-
-			res.json({ status: 'success' });
-		} catch (error) {
-			next(error);
-		}
-	})
-
-	// this is our create method
-	// this method adds new data in our database
+	
 	.post("/users", accessMiddleware, async (req, res, next) => {
 		try {
 			let isAdmin;
@@ -104,6 +78,7 @@ router
 			res.json({ status: 'success', data: result });
 
 		} catch (error) {
+			res.json({ status: 'error', message: error });
 			next(error);
 		}
 	});

@@ -43,7 +43,7 @@ const Info = props => {
 						<div className="row">
 							<div className="col-6">
 								<div className="user-info-first align-items-center">
-									<h2 className="user-info-first__name">{user.surname} {user.name}</h2>
+									<h2 className="user-info-first__name">{user.name} {user.surname} </h2>
 									<div className="user-info-first__links">
 										<Link to="/edit" className="btn-custom">Редагувати</Link>
 										<Link to="/" className="btn-custom" onClick={logout}>Вийти</Link>

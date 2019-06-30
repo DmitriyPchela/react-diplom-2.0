@@ -33,6 +33,38 @@ img {
 	height: 100%;
 }
 
+.table {
+	p {
+		text-align: center;
+		margin-bottom: 0;
+		@include text($black, 16px, 300);
+		opacity: 0.4;
+		font-style: italic;
+		a {
+			color: $blue;
+			text-decoration: underline;
+		}
+
+	}
+	thead {
+		background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
+		tr {
+			th {
+				vertical-align: middle;
+				text-align: center;
+				color: $white;
+			}
+		}
+	}
+	tbody {
+		tr {
+			td {
+				text-align: center;
+			}
+		}
+	}
+}
+
 .modal-container {
 	display: none;
 	background-color: rgba(0,0,0,0.5);
@@ -179,7 +211,6 @@ input, textarea {
 		textarea {
 			@include text($black, 16px);
 			padding: 10px 15px;
-			height: 120px;
 		}
 		button {
 			width: 100%;

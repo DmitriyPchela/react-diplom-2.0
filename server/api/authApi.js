@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../database/db');
 const { getToken } = require('../lib/utils');
+
 router
     .post('/auth/login', async function (req, res, next) {
         const { login, password} = req.body;
@@ -28,7 +29,7 @@ router
            } else {
                res.json({
                    status: 'error',
-                   message: 'User not found'
+                   message: 'Неправильний логін або пароль'
                })
            }
        } catch (err) {
@@ -64,13 +65,12 @@ router
         } else {
             res.json({
                 status: 'error',
-                message: 'Користувач не знайдений!'
+                message: 'Користувач не авторизований!'
             })
         }
     })
 
     .post('/auth/logout', async (req, res, next) => {
-        // const token = req.headers['proxy-authorization'];
         const { token } = req.body;
 
         try {

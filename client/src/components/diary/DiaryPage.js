@@ -3,13 +3,13 @@ import {Link} from "react-router-dom";
 import LC from "local-storage";
 
 
-import HeaderPage from "../common/HeaderPage";
+import SectionHeader from "../common/SectionHeader";
 import DiaryForm from "./DiaryForm";
 
 const DiaryPage = () => {
 	return (
 		<main id='diaryPage'>
-			<HeaderPage bgImage={'https://colorlib.com/preview/theme/medart/images/service-bg.png'} pageLink={'/services'} pageName={"Послуги"}/>
+			<SectionHeader bgImage={'https://colorlib.com/preview/theme/medart/images/service-bg.png'} pageLink={'/services'} pageName={"Послуги"}/>
 			<section className="section-info">
 				<div className="container">
 					<h1 className="title">Про наші послуги</h1>
@@ -29,16 +29,31 @@ const DiaryPage = () => {
 					</div>
 				</div>
 			</section>
-			<section className="section-services">
-				<div className="container">
-					<h2 className="sub-title">Щоденник контролю</h2>
-					{
-						LC.get('profile') != null ?
-							<DiaryForm/>
-							: <p className="info">Для заповнення щоденнику контролю, необхідно <Link to="/registration"> зареєструватися</Link> та увійти до <Link to="/account"> особистого кабінету!</Link></p>
-					}
-				</div>
-			</section>
+			{
+				LC.get('profile') !== null ?
+					LC.get('profile').isAdmin ?
+						'' :
+						<>
+							<section className="section-services">
+								<div className="container">
+									<h2 className="sub-title">Щоденник контролю</h2>
+									<DiaryForm/>
+								</div>
+							</section>
+						</> :
+					<>
+						<section className="section-services">
+							<div className="container">
+								<h2 className="sub-title">Щоденник контролю</h2>
+								<p className="info">
+									Для заповнення щоденнику контролю, необхідно <Link to="/registration"> зареєструватися!</Link>
+								</p>
+							</div>
+						</section>
+					</>
+				
+			}
+			
 		</main>
 	);
 };

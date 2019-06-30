@@ -2,7 +2,7 @@ import React  from 'react';
 import { NavLink, Link, withRouter } from "react-router-dom";
 
 
-const NavHeader = props => {
+const Header = props => {
 	return (
 		<header>
 			<div className="container nav-header-box">
@@ -10,28 +10,28 @@ const NavHeader = props => {
 					<img src={require('../../assets/images/logo.png')} alt="Logo img"/>
 				</NavLink>
 				<nav className="header-nav">
-					<NavLink to="/about" className="header-nav__item">Про нас</NavLink>
-					<NavLink to="/services" className="header-nav__item">Послуги</NavLink>
-					<NavLink to="/news" className="header-nav__item">Новини</NavLink>
-					<NavLink to="/contacts" className="header-nav__item">Контакти</NavLink>
+					<Link to="/about" className="header-nav__item">Про нас</Link>
+					<Link to="/services" className="header-nav__item">Послуги</Link>
+					<Link to="/news" className="header-nav__item">Новини</Link>
+					<Link to="/contacts" className="header-nav__item">Контакти</Link>
 				</nav>
 				<div className="login-box">
 					{
 						props.isAuthorized ?
 							<div className="phone-box">
-								<Link to="/account">
+								<NavLink to="/account">
 									<img src={require('../../assets/images/user.svg')} alt="Call icon"/>
 									Особистий кабінет
-								</Link>
+								</NavLink>
 							</div>
 							:
 							<>
-								<Link to="/registration" className="register-link">Реєстрація</Link>
+								<NavLink to="/registration" className="register-link">Реєстрація</NavLink>
 								<div className="phone-box">
-									<Link to="/login">
+									<NavLink to="/login">
 										<img src={require('../../assets/images/user.svg')} alt="Call icon"/>
 										Увійти
-									</Link>
+									</NavLink>
 								</div>
 							</>
 					}
@@ -41,4 +41,4 @@ const NavHeader = props => {
 	);
 };
 
-export default withRouter(NavHeader);
+export default withRouter(Header);

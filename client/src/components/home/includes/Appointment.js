@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 
-const Appointment = ({onChange, onSubmit}) => {
+const appointmentData = {
+	name: '',
+	phone: '',
+	comment: ''
+};
+
+const Appointment = () => {
+	const [data, setData] = useState(appointmentData);
+	
+	const handleChange = e => {
+		const {name, value} = e.target;
+		setData(prevState => ({ ...prevState, [name]: value }))
+	};
+	const handleSubmit = e => {
+		e.preventDefault();
+		console.log(data);
+	};
+	
 	return (
 		<section className="section-appointment">
 			<div className="container">
@@ -11,20 +28,12 @@ const Appointment = ({onChange, onSubmit}) => {
 							<h2 className="appointment-box__title">Графік консультацій</h2>
 							<ul className="list p-0 m-0">
 								<li className="list__item">
-									Monday - Thursday
-									<span>8.00 - 19.00</span>
+									Пн-Пт
+									<span>8:00 - 19:00</span>
 								</li>
 								<li className="list__item">
-									Friday
-									<span>8.00 - 18.30</span>
-								</li>
-								<li className="list__item">
-									Saturday
-									<span>9:30 - 17.00</span>
-								</li>
-								<li className="list__item">
-									Sunday
-									<span>9.30 - 15.00</span>
+									Сб-Вс
+									<span>9:30 - 17:00</span>
 								</li>
 							</ul>
 						</div>
@@ -39,20 +48,18 @@ const Appointment = ({onChange, onSubmit}) => {
 								</a>
 							</div>
 							<p className="appointment-box__text">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid aspernatur
-								autem consequatur, deleniti dolores enim eos excepturi ipsa labore laudantium odio
-								officiis perferendis perspiciatis quam ratione soluta vero voluptates.
+								Якщо Вам потрібна допомога, то зв'яжіться з Вашим лікарем.
 							</p>
 						</div>
 					</div>
 					<div className="col-12 col-lg-5">
 						<div className="appointment-box">
-							<h2 className="appointment-box__title">Зробити запис</h2>
-							<form onSubmit={onSubmit}>
-								<input name="name" type="text" placeholder="Ім'я" onChange={onChange}/>
-								<InputMask mask="+38 (099) 999-99-99" name="phone" type="text" placeholder="Номер телефону" onChange={onChange}/>
-								<textarea name="comment" rows="5" placeholder="Коментар" onChange={onChange}/>
-								<button className="btn-custom" type="submit">Записатись</button>
+							<h2 className="appointment-box__title">Записатися на консультацію</h2>
+							<form onSubmit={handleSubmit}>
+								<input name="name" type="text" placeholder="Ім'я" onChange={handleChange}/>
+								<InputMask mask="+38 (099) 999-99-99" name="phone" type="text" placeholder="Номер телефону" onChange={handleChange}/>
+								<textarea name="comment" rows="5" placeholder="Коментар" onChange={handleChange}/>
+								<button className="btn-custom" type="submit">Записатися</button>
 							</form>
 						</div>
 					</div>

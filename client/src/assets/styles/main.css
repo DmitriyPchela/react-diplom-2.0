@@ -9695,6 +9695,32 @@ img {
   height: 100%;
 }
 
+.table p {
+  text-align: center;
+  margin-bottom: 0;
+  color: #404040;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.4;
+  font-style: italic;
+}
+.table p a {
+  color: #18a3eb;
+  text-decoration: underline;
+}
+.table thead {
+  background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
+}
+.table thead tr th {
+  vertical-align: middle;
+  text-align: center;
+  color: #ffffff;
+}
+.table tbody tr td {
+  text-align: center;
+}
+
 .modal-container {
   display: none;
   background-color: rgba(0, 0, 0, 0.5);
@@ -9885,7 +9911,6 @@ input::placeholder, textarea::placeholder {
   font-weight: 400;
   line-height: 1.5;
   padding: 10px 15px;
-  height: 120px;
 }
 .form-container .form-group button {
   width: 100%;
@@ -10578,12 +10603,6 @@ footer .footer-links ul li a {
   opacity: 0.4;
   font-style: italic;
 }
-#account-page .section-account .user-photo-box {
-  width: 150px;
-  overflow: hidden;
-  border-radius: 50%;
-  margin: 0 auto;
-}
 #account-page .section-account .user-info-first {
   display: flex;
   flex-direction: column;
@@ -10631,6 +10650,13 @@ footer .footer-links ul li a {
   font-weight: 600;
   margin-right: 20px;
 }
+#account-page .section-medicine {
+  padding-bottom: 60px;
+}
+#account-page .section-medicine .table {
+  max-width: 60%;
+  margin: 0 auto;
+}
 #account-page .section-health-status {
   padding-bottom: 60px;
 }
@@ -10647,31 +10673,6 @@ footer .footer-links ul li a {
   font-size: 48px;
   font-weight: 700;
   line-height: 1.5;
-}
-#account-page .section-health-status .table p {
-  text-align: center;
-  margin-bottom: 0;
-  color: #404040;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.5;
-  opacity: 0.4;
-  font-style: italic;
-}
-#account-page .section-health-status .table p a {
-  color: #18a3eb;
-  text-decoration: underline;
-}
-#account-page .section-health-status .table thead {
-  background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
-}
-#account-page .section-health-status .table thead tr th {
-  vertical-align: middle;
-  text-align: center;
-  color: #ffffff;
-}
-#account-page .section-health-status .table tbody tr td {
-  text-align: center;
 }
 #account-page .section-health-chart {
   padding-bottom: 60px;
@@ -10800,30 +10801,7 @@ footer .footer-links ul li a {
 #edit-page .section-health-table {
   padding-bottom: 80px;
 }
-#edit-page .section-health-table .table p {
-  text-align: center;
-  margin-bottom: 0;
-  color: #404040;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.5;
-  opacity: 0.4;
-  font-style: italic;
-}
-#edit-page .section-health-table .table p a {
-  color: #18a3eb;
-  text-decoration: underline;
-}
-#edit-page .section-health-table .table thead {
-  background: linear-gradient(270deg, #32c8fa 0%, #587de4 100%);
-}
-#edit-page .section-health-table .table thead tr th {
-  vertical-align: middle;
-  text-align: center;
-  color: #ffffff;
-}
 #edit-page .section-health-table .table tbody tr td {
-  text-align: center;
   vertical-align: middle;
 }
 #edit-page .section-health-table .table tbody tr td .form-group {
@@ -10849,6 +10827,10 @@ footer .footer-links ul li a {
 #edit-page .section-health-table .table tbody tr td .form-group .select-wrapper select {
   -webkit-appearance: none;
   padding: 7px 25px 7px 15px;
+}
+#edit-page .section-health-table .table tbody tr td .form-group textarea {
+  height: auto;
+  margin-bottom: 0;
 }
 #edit-page .section-health-table .table tbody tr td .btn-delete {
   padding: 0;
@@ -10976,6 +10958,125 @@ footer .footer-links ul li a {
   font-size: 16px;
   font-weight: 600;
   color: #828282;
+}
+
+#user-page {
+  padding-bottom: 60px;
+}
+#user-page .section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #404040;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+#user-page .section-medicine {
+  padding-bottom: 60px;
+}
+#user-page .section-medicine .table {
+  max-width: 60%;
+  margin: 0 auto;
+}
+#user-page .section-user-info {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+#user-page .section-user-info p {
+  text-align: center;
+  color: #404040;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  opacity: 0.4;
+  font-style: italic;
+}
+#user-page .section-user-info .link-back {
+  margin-bottom: 20px;
+}
+#user-page .section-user-info .link-back a {
+  text-decoration: underline;
+  color: #18a3eb;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+#user-page .section-user-info .link-back a i {
+  margin-right: 10px;
+}
+#user-page .section-user-info .user-info-first {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+#user-page .section-user-info .user-info-first__name {
+  color: #404040;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+#user-page .section-user-info .user-info-second {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  border-left: 2px dashed #ccc;
+  padding-left: 30px;
+}
+#user-page .section-user-info .user-info-second__item {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#user-page .section-user-info .user-info-second__item span {
+  color: #404040;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+#user-page .section-user-info .user-info-second__item span.field-name {
+  font-weight: 600;
+  margin-right: 20px;
+}
+#user-page .btn-custom {
+  min-width: 150px;
+}
+#user-page #modalCure .modal-header {
+  position: relative;
+}
+#user-page #modalCure .modal-header .modal-title {
+  text-align: center;
+  color: #404040;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+#user-page #modalCure .modal-header .close {
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: auto;
+  right: 15px;
+  bottom: auto;
+}
+#user-page #modalCure .modal-header .close span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #404040;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
 }
 
 /*# sourceMappingURL=main.css.map */

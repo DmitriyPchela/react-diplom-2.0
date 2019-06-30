@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputSelect = ({name, label, value, error, small, className, options, onChange}) => {
+const InputSelect = ({name, label, value, error, small, className, options, optionDefault, onChange}) => {
 	let wrapClass = `form-group`;
 	if (error) {
 		wrapClass += ' has-error';
@@ -13,7 +13,7 @@ const InputSelect = ({name, label, value, error, small, className, options, onCh
 			<label htmlFor={name}>{label}</label>
 			<div className="select-wrapper">
 				<select className="form-control" name={name} value={value} onChange={onChange}>
-					<option value="default" disabled>Оберіть Ваше самопочуття:</option>
+					<option value="default" disabled>{optionDefault}</option>
 					{
 						options.map(opt => <option key={opt} value={opt}>{opt}</option>)
 					}

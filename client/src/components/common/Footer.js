@@ -12,11 +12,6 @@ const NavFooter = () => {
 							<Link to="/">
 								<img src={require('../../assets/images/logo.png')} alt="Logo"/>
 							</Link>
-							<p className="text">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cupiditate
-								debitis distinctio doloremque dolores enim, illum maxime natus, possimus quas qui sed
-								sint voluptates! Beatae eveniet inventore quisquam unde voluptatum.
-							</p>
 							<p className="text copyright">
 								Copyright © {new Date().getFullYear()} Всі права захищені
 							</p>
@@ -28,7 +23,7 @@ const NavFooter = () => {
 							<ul className="p-0 m-0">
 								<li>
 									<span>Адреса: </span>
-									Mitlton Str. 26-27 London UK
+									просп. Шевченка 3а
 								</li>
 								<li>
 									<span>Телефон: </span>

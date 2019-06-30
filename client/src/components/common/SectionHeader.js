@@ -1,7 +1,7 @@
 import React from 'react';
 import Breadcrumps from "./Breadcrumps";
 
-const HeaderPage = ({bgImage, pageLink, pageName, pageLinkPrev, pageNamePrev}) => {
+const SectionHeader = ({bgImage, pageLink, pageName, pageLinkPrev, pageNamePrev}) => {
 	return (
 		<section className="section-header">
 			<img src={bgImage} alt="About"/>
@@ -13,4 +13,4 @@ const HeaderPage = ({bgImage, pageLink, pageName, pageLinkPrev, pageNamePrev}) =
 	);
 };
 
-export default HeaderPage;
+export default SectionHeader;
